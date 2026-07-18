@@ -1,0 +1,69 @@
+@startuml diagram
+
+class House {
+    -name: String
+    -rooms: ArrayList<Room>
+    -menu: Menu
+
+    +House(String name): void
+    +addRoom(String roomName): void
+    +addNewGuest(String name): void 
+}
+
+class Room {
+    -name: String
+    -guests: ArrayList<Guest>
+
+    +Room(String name): void
+    +getName(): String
+    +addGuest(Guest guest): void
+}
+class Guest {
+    -name: String
+    -orderHistory: ArrayList<Order>
+
+    +Guest(String name): void
+    +addOrder(Order order): void
+}
+class Order {
+    -orderedItems: ArrayList<MenuItem>
+
+    -calcPrice(): float
+    +getTotal(): float
+}
+class Menu {
+    -menuType: MenuType
+    -menuItems: ArrayList<MenuItem>
+}
+class MenuItem {
+    -name: String
+    -cost: float
+
+    +MenuItem(String name, float cost): void
+    +getPrice(): float
+}
+enum MenuType {
+    COMFORTO, EXECUTIVO
+}
+class Beverage {
+    +Beverage(String name, float price): void
+}
+class Food {
+    +Food(String name, float price): void
+}
+
+
+
+House --> "*" Room
+Room --> "*" Guest
+Guest --> "*" Order
+House --> Menu
+Menu --> "*" MenuItem
+Menu --> MenuType
+Food --up|> MenuItem
+Beverage --up|> MenuItem
+Order --> "*" MenuItem
+
+@enduml
+
+
