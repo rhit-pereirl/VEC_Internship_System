@@ -52,10 +52,26 @@ public class SystemManager {
         mirante.addRoom("Suite Concha");
         mirante.addRoom("Suite Varanda");
         mirante.addRoom("Suite Canoa");
+        // Seventh House
+        House corais = new House("Casa dos Corais");
+        corais.addRoom("Suite Master");
+        corais.addRoom("Suite Dourado");
+        corais.addRoom("Suite Robalo");
+        corais.addRoom("Suite Carapeba");
+        corais.addRoom("Suite Cumurupim");
+        corais.addRoom("Suite Xareu");
+        corais.addRoom("Suite Cioba");
+        corais.addRoom("Suite Pampo");
+        corais.addRoom("Suite Pescada");
+        corais.addRoom("Suite Beijupira");
 
-
-
-
+        this.houses.add(cruzeiro);
+        this.houses.add(pescador);
+        this.houses.add(areia);
+        this.houses.add(estrela);
+        this.houses.add(amendoeira);
+        this.houses.add(mirante);
+        this.houses.add(corais);
     }
 
     public void delHome(String home) {
