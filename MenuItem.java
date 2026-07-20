@@ -1,5 +1,3 @@
-
-
 public abstract class MenuItem {
     private String name;
     private float cost;

@@ -12,4 +12,25 @@ public class SystemManager {
 
     }
 
+    public void delHome(String home) {
+        for (House house: houses) {
+            if (house.getName().equals(home)) {
+                houses.remove(house);
+            }
+        }
+    }
+
+    public Menu getHouseMenu(String home) {
+        for (House house: houses) {
+            if (house.getName().equals(home)) {
+                return house.getMenu();
+            }
+        }
+        throw new Error("House Not Found");
+    }
+
+    public void addNewMenu(MenuType menuType) {
+        menus.add(new Menu(menuType));
+    }
+
 }

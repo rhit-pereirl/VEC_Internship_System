@@ -10,6 +10,14 @@ public class House {
         this.name = name;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public Menu getMenu() {
+        return this.menu;
+    }
+
     public void addRoom(String roomName) {
         this.rooms.add(new Room(roomName));
     }

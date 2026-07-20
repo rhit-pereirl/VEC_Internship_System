@@ -4,6 +4,10 @@ public class Menu {
     private MenuType menuType;
     private ArrayList<MenuItem> menuItems;
 
+    public Menu(MenuType mt) {
+        this.menuType = mt;
+    }
+
     public void addMenuItem(MenuItem item) {
         this.menuItems.add(item);
     }
