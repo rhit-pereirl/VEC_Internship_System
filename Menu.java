@@ -19,4 +19,8 @@ public class Menu {
     public void setMenuType(MenuType menuType) {
         this.menuType = menuType;
     }
+
+    public String getMenuType() {
+        return "Menu " + this.menuType.toString();
+    }
 }

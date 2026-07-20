@@ -4,4 +4,6 @@ public class Food extends MenuItem {
         super(name, cost);
     }
     
+    
+
 }
