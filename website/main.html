@@ -4,10 +4,103 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>Page Title</title>
-    <link href="https://jsdelivr.net" rel="stylesheet">
-    <link rel='stylesheet' href='styles/main.css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel='stylesheet' href='styles/style.css'>
 </head>
 <body>
+    <nav class="navbar bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+            <!-- Resort name with menu navbar to switch to different sections of the menu -->
+            <a class="navbar-brand" href="#">Resort Name</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <!-- Menu Navbar -->
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu Name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <!-- Different Sections of the menu -->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Item Type 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Item Type 2</a>
+                </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid page-container" style="margin-top: 2.8rem;">
+        <div class="row row-cols-5">
+            <div class="col">
+                <div class="card" style="width: 100%; margin-top: 1rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Menu Item</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                        <a href="#" class="btn btn-primary">+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 100%; margin-top: 1rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Menu Item</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                        <a href="#" class="btn btn-primary center">+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 100%; margin-top: 1rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Menu Item</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                        <a href="#" class="btn btn-primary center">+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 100%; margin-top: 1rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Menu Item</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                        <a href="#" class="btn btn-primary center">+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 100%; margin-top: 1rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Menu Item</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                        <a href="#" class="btn btn-primary center">+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 100%; margin-top: 1rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Menu Item</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                        <a href="#" class="btn btn-primary center">+</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
-</body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </html>
