@@ -9,8 +9,20 @@ public abstract class MenuItem {
         this.cost = cost;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCost(float price) {
+        this.cost = price;
+    }
+
     public float getPrice() {
         return this.cost;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
 }

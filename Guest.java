@@ -13,5 +13,17 @@ public class Guest {
         orderHistory.add(order);
     }
 
+    public void delOrder(Order order) {
+        orderHistory.remove(order);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Order> getOrders() {
+        return orderHistory;
+    }
+
 
 }

@@ -22,4 +22,16 @@ public class House {
         }
     }
 
+    public void delGuest(String name, String roomName) {
+        for (Room room: rooms) {
+            if (room.getName().equals(roomName)) {
+                for (Guest guest: room.getGuests()) {
+                    if (guest.getName().equals(name)) {
+                        room.delGuest(guest);
+                    }
+                }
+            }   
+        }
+    }
+
 }

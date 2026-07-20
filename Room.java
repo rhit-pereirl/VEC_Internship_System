@@ -16,4 +16,12 @@ public class Room {
     public void addGuest(Guest guest) {
         this.guests.add(guest);
     }
+
+    public ArrayList<Guest> getGuests() {
+        return guests;
+    }
+
+    public void delGuest(Guest guest) {
+        this.guests.remove(guest);
+    }
 }
