@@ -1,6 +1,6 @@
 public class Beverage extends MenuItem {
 
-    public Beverage(String name, int cost) {
+    public Beverage(String name, float cost) {
         super(name, cost);
     }
     

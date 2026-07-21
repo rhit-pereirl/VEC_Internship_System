@@ -13,6 +13,10 @@ public class Room {
         return name;
     }
 
+    public void rename(String newName) {
+        this.name = newName;
+    }
+
     public void addGuest(Guest guest) {
         this.guests.add(guest);
     }
@@ -23,5 +27,11 @@ public class Room {
 
     public void delGuest(Guest guest) {
         this.guests.remove(guest);
+    }
+
+    public void delAllGuests() {
+        for (Guest guest: guests) {
+            this.guests.remove(guest);
+        }
     }
 }

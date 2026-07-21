@@ -5,6 +5,7 @@ public class House {
     private String name;
     private ArrayList<Room> rooms;
     private Menu menu;
+    private ArrayList<Experience> experiences;
 
     public House(String name) {
         this.name = name;
@@ -30,15 +31,14 @@ public class House {
         }
     }
 
-    public void delGuest(String name, String roomName) {
+    public void addExperience(Experience experience) {
+        this.experiences.add(experience);
+    }
+
+    public void delAllRooms() {
         for (Room room: rooms) {
-            if (room.getName().equals(roomName)) {
-                for (Guest guest: room.getGuests()) {
-                    if (guest.getName().equals(name)) {
-                        room.delGuest(guest);
-                    }
-                }
-            }   
+            room.delAllGuests();
+            rooms.remove(room);
         }
     }
 

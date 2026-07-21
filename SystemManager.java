@@ -7,6 +7,8 @@ public class SystemManager {
     private ArrayList<Guest> guests;
     private ArrayList<Menu> menus;
     private ArrayList<MenuItem> menuItems;
+    // Experiences are like yoga classes, surfing classes, fishing trips, etc
+    private ArrayList<Experience> allExperiences;
 
     public SystemManager() {
 
@@ -93,6 +95,22 @@ public class SystemManager {
 
     public void addNewMenu(MenuType menuType) {
         menus.add(new Menu(menuType));
+    }
+
+    public void addFood(String name, float cost) {
+        menuItems.add(new Food(name, cost));
+    }
+
+    public void addBeverage(String name, float cost) {
+        menuItems.add(new Beverage(name, cost));
+    }
+
+    public void addExperience(String name, float cost) {
+        allExperiences.add(new Experience(name, cost));
+    }
+
+    public void addGuest(String name) {
+        guests.add(new Guest(name));
     }
 
 }
