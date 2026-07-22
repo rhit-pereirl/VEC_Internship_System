@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Page Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel='stylesheet' href='styles/style.css'>
+</head>
+<body>
+    <!-- NAVBAR AREA -->
+    <nav class="navbar bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+            <!-- Resort name with menu navbar to switch to different sections of the menu -->
+            <a class="navbar-brand" href="#">Resort Name</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <!-- Menu Navbar -->
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu Name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <!-- Different Sections of the menu -->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Item Type 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Item Type 2</a>
+                </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <h1 style="margin-top: 5rem; margin-left: 3rem">Casas Vila Entre Chaves</h1>
+
+    <div class="container-fluid page-container" style="margin-top: 1rem;">
+        <div class="row row-cols-5">
+            <div class="col">
+                <div class="card" style="width: 100%; margin-top: 1rem;">
+                    <img src="./Images/cruzeiro_pic.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Casa Cruzeiro</h5>
+                        <p class="card-text" id="cruzeiro-ocupado">Casa Ocupada: Não</p>
+                        <p class="card-text" id="plano-tip">Plano: N/A</p>
+                        <a href="#" class="btn btn-primary">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 100%; margin-top: 1rem;">
+                    <img src="./Images/pescador_pic.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Casa do Pescador</h5>
+                        <p class="card-text" id="cruzeiro-ocupado">Casa Ocupada: Não</p>
+                        <p class="card-text" id="plano-tip">Plano: N/A</p>
+                        <a href="#" class="btn btn-primary">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 100%; margin-top: 1rem;">
+                    <img src="./Images/area_pic.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Casa Areia Colorida</h5>
+                        <p class="card-text" id="cruzeiro-ocupado">Casa Ocupada: Não</p>
+                        <p class="card-text" id="plano-tip">Plano: N/A</p>
+                        <a href="#" class="btn btn-primary">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 100%; margin-top: 1rem;">
+                    <img src="./Images/estrela_pic.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Casa Estrela do Mar</h5>
+                        <p class="card-text" id="cruzeiro-ocupado">Casa Ocupada: Não</p>
+                        <p class="card-text" id="plano-tip">Plano: N/A</p>
+                        <a href="#" class="btn btn-primary">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 100%; margin-top: 1rem;">
+                    <img src="./Images/amendoeira_pic.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Casa Amendoeira</h5>
+                        <p class="card-text" id="cruzeiro-ocupado">Casa Ocupada: Não</p>
+                        <p class="card-text" id="plano-tip">Plano: N/A</p>
+                        <a href="#" class="btn btn-primary">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 100%; margin-top: 1rem;">
+                    <img src="./Images/mirante_pic.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Casa Mirante da Gameleira</h5>
+                        <p class="card-text" id="cruzeiro-ocupado">Casa Ocupada: Não</p>
+                        <p class="card-text" id="plano-tip">Plano: N/A</p>
+                        <a href="#" class="btn btn-primary">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 100%; margin-top: 1rem;">
+                    <img src="./Images/corais_pic.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Casa dos Corais</h5>
+                        <p class="card-text" id="cruzeiro-ocupado">Casa Ocupada: Não</p>
+                        <p class="card-text" id="plano-tip">Plano: N/A</p>
+                        <a href="#" class="btn btn-primary">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</html>
