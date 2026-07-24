@@ -6,84 +6,236 @@
     <title>Page Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel='stylesheet' href='styles/style.css'>
+    <style>
+        body {
+            margin: 0;
+        }
+        .hero-section {
+            position: relative;
+            min-height: 70vh;
+            background: url('./Images/cruzeiro_pic.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 1rem;
+            margin-bottom: 2rem;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: #ffffff;
+        }
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 0 1rem rgba(0, 0, 0, 0.7);
+        }
+        .hero-subtitle,
+        .hero-plan {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            margin-top: 1rem;
+            text-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.6);
+        }
+        .hero-plan {
+            font-weight: 600;
+        }
+        .rooms-section {
+            padding: 2rem 0 3rem;
+        }
+        .section-heading {
+            font-size: clamp(1.75rem, 2vw, 2.5rem);
+            font-weight: 700;
+        }
+        .room-card {
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+        .room-card img {
+            height: 230px;
+            object-fit: cover;
+        }
+        .room-card-body {
+            padding: 1.5rem;
+        }
+        .guests-section {
+            padding: 2rem 0 3rem;
+        }
+        .guest-card {
+            border-radius: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .guest-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.12);
+        }
+        .guest-card-body {
+            padding: 1.5rem;
+        }
+        .guest-card-title {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .guest-action {
+            min-width: 130px;
+        }
+    </style>
 </head>
 <body>
-    <!-- NAVBAR AREA -->
-    <nav class="navbar bg-body-tertiary fixed-top">
-        <div class="container-fluid">
-            <!-- Resort name with menu navbar to switch to different sections of the menu -->
-            <a class="navbar-brand" href="#">Vila Entre Chaves</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-                <!-- Menu Navbar -->
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu Name</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <!-- Different Sections of the menu -->
-                <li class="nav-item row">
-                    <div class="col-10">
-                        <a class="nav-link active" aria-current="page" href="#">Item Type 1</a>
+    <div class="container text-center">
+        <div class="row" style="height: 3.5rem">
+            <div class="col">
+                <!-- NAVBAR AREA -->
+                <nav class="navbar bg-body-tertiary fixed-top">
+                    <div class="container-fluid">
+                        <!-- Resort name with menu navbar to switch to different sections of the menu -->
+                        <a href="houseMenu.html" class="navbar-brand" href="#">Vila Entre Chaves</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <!-- Menu Navbar -->
+                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu Name</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <!-- Different Sections of the menu -->
+                            <li class="nav-item row">
+                                <div class="col-10">
+                                    <a class="nav-link active" aria-current="page" href="#">Item Type 1</a>
+                                </div>
+                                <div class="col-2">
+                                    <a class="nav-link active btn btn-primary d-flex align-items-center justify-content-center" style="height: 90%;" aria-current="page" href="#">-</a>
+                                </div>
+                            </li>
+                            <li class="nav-item row">
+                                <div class="col-10">
+                                    <a class="nav-link active" aria-current="page" href="#">Item Type 2</a>
+                                </div>
+                                <div class="col-2">
+                                    <a class="nav-link active btn btn-primary d-flex align-items-center justify-content-center" style="height: 90%;" aria-current="page" href="#">-</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active btn btn-primary d-flex align-items-center justify-content-center" aria-current="page" href="#">+</a>
+                            </li>
+                            </ul>
+                        </div>
+                        </div>
                     </div>
-                    <div class="col-2">
-                        <a class="nav-link active btn btn-primary d-flex align-items-center justify-content-center" style="height: 90%;" aria-current="page" href="#">-</a>
-                    </div>
-                </li>
-                <li class="nav-item row">
-                    <div class="col-10">
-                        <a class="nav-link active" aria-current="page" href="#">Item Type 2</a>
-                    </div>
-                    <div class="col-2">
-                        <a class="nav-link active btn btn-primary d-flex align-items-center justify-content-center" style="height: 90%;" aria-current="page" href="#">-</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active btn btn-primary d-flex align-items-center justify-content-center" aria-current="page" href="#">+</a>
-                </li>
-                </ul>
-            </div>
+                </nav>
             </div>
         </div>
-    </nav>
-
-    <main class="d-flex flex-nowrap">
-    <!-- HUGE SIDEBAR -->
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 16rem; margin-top: 3.5rem"> 
-        <hr> 
-        <ul class="nav nav-pills flex-column mb-auto"> 
-            <li class="nav-item"> <a href="#" class="nav-link active" aria-current="page"> 
-                <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
-                    <use xlink:href="#home"></use></svg>Home</a> 
-            </li> 
-            <li> 
-                <a href="#" class="nav-link text-white"> 
-                    <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
-                        <use xlink:href="#speedometer2"></use></svg>Dashboard</a> 
-            </li> 
-            <li> 
-                <a href="#" class="nav-link text-white"> 
-                    <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
-                        <use xlink:href="#table"></use></svg>Orders</a> 
-            </li> 
-            <li> 
-                <a href="#" class="nav-link text-white"> 
-                    <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
-                        <use xlink:href="#grid"></use></svg>Products</a> 
-            </li> 
-            <li> 
-                <a href="#" class="nav-link text-white"> 
-                    <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true">
-                        <use xlink:href="#people-circle"></use></svg>Customers</a>
-            </li> 
-        </ul> 
-        <hr> 
+        
     </div>
-    </main>
-
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content text-center">
+            <h1 class="hero-title">Casa Cruzeiro</h1>
+            <p class="hero-plan">Plano: Executivo</p>
+            <p class="hero-subtitle">Admin dashboard for house details, rooms, and current guests.</p>
+        </div>
+    </section>
+    <section class="rooms-section container">
+        <div class="text-center mb-4">
+            <h2 class="section-heading">Cruzeiro Rooms</h2>
+            <p class="text-muted">Current occupancy status for the primary house rooms.</p>
+        </div>
+        <div class="row justify-content-center g-4">
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="card room-card shadow-sm w-100">
+                    <img src="./Images/cruzeiro_rooms/master_suite_pic.jpg" class="card-img-top" alt="Master Suite">
+                    <div class="card-body room-card-body">
+                        <h5 class="card-title">Master Suite</h5>
+                        <p class="card-text mb-1"><strong>Guests:</strong> 2 / 2</p>
+                        <p class="card-text mb-0">Lucas Silva, Marina Costa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="card room-card shadow-sm w-100">
+                    <img src="./Images/cruzeiro_rooms/suite_acerola_pic.jpg" class="card-img-top" alt="Suite Acerola">
+                    <div class="card-body room-card-body">
+                        <h5 class="card-title">Suite Acerola</h5>
+                        <p class="card-text mb-1"><strong>Guests:</strong> 1 / 2</p>
+                        <p class="card-text mb-0">Ana Rocha</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="card room-card shadow-sm w-100">
+                    <img src="./Images/cruzeiro_rooms/suite_caju_pic.jpg" class="card-img-top" alt="Suite Caju">
+                    <div class="card-body room-card-body">
+                        <h5 class="card-title">Suite Caju</h5>
+                        <p class="card-text mb-1"><strong>Guests:</strong> 2 / 2</p>
+                        <p class="card-text mb-0">Mateus Lima, Sofia Alves</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="guests-section container">
+        <div class="text-center mb-4">
+            <h2 class="section-heading">Guests in the House</h2>
+            <p class="text-muted">Monitor each guest and review their current kitchen orders.</p>
+        </div>
+        <div class="row justify-content-center g-4">
+            <div class="col-12 col-sm-6 col-lg-4 d-flex">
+                <div class="card guest-card shadow-sm w-100">
+                    <div class="card-body guest-card-body d-flex flex-column">
+                        <h5 class="guest-card-title">Lucas Silva</h5>
+                        <p class="text-muted mb-4">Quarto: Master Suite</p>
+                        <button class="btn btn-outline-primary align-self-start guest-action">Ver pedidos</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 d-flex">
+                <div class="card guest-card shadow-sm w-100">
+                    <div class="card-body guest-card-body d-flex flex-column">
+                        <h5 class="guest-card-title">Marina Costa</h5>
+                        <p class="text-muted mb-4">Quarto: Master Suite</p>
+                        <button class="btn btn-outline-primary align-self-start guest-action">Ver pedidos</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 d-flex">
+                <div class="card guest-card shadow-sm w-100">
+                    <div class="card-body guest-card-body d-flex flex-column">
+                        <h5 class="guest-card-title">Ana Rocha</h5>
+                        <p class="text-muted mb-4">Quarto: Suite Acerola</p>
+                        <button class="btn btn-outline-primary align-self-start guest-action">Ver pedidos</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 d-flex">
+                <div class="card guest-card shadow-sm w-100">
+                    <div class="card-body guest-card-body d-flex flex-column">
+                        <h5 class="guest-card-title">Mateus Lima</h5>
+                        <p class="text-muted mb-4">Quarto: Suite Caju</p>
+                        <button class="btn btn-outline-primary align-self-start guest-action">Ver pedidos</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 d-flex">
+                <div class="card guest-card shadow-sm w-100">
+                    <div class="card-body guest-card-body d-flex flex-column">
+                        <h5 class="guest-card-title">Sofia Alves</h5>
+                        <p class="text-muted mb-4">Quarto: Suite Caju</p>
+                        <button class="btn btn-outline-primary align-self-start guest-action">Ver pedidos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </html>
