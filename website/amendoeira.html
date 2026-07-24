@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Amendoeira Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel='stylesheet' href='styles/style.css'>
+    <style>
+        body {
+            margin: 0;
+        }
+        .hero-section {
+            position: relative;
+            min-height: 70vh;
+            background: url('./Images/amendoeira_pic.jpeg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 1rem;
+            margin-bottom: 2rem;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: #ffffff;
+        }
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 0 1rem rgba(0, 0, 0, 0.7);
+        }
+        .hero-subtitle,
+        .hero-plan {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            margin-top: 1rem;
+            text-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.6);
+        }
+        .hero-plan {
+            font-weight: 600;
+        }
+        .rooms-section {
+            padding: 2rem 0 3rem;
+        }
+        .section-heading {
+            font-size: clamp(1.75rem, 2vw, 2.5rem);
+            font-weight: 700;
+        }
+        .room-card {
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+        .room-card img {
+            height: 230px;
+            object-fit: cover;
+        }
+        .room-card-body {
+            padding: 1.5rem;
+        }
+        .guests-section {
+            padding: 2rem 0 3rem;
+        }
+        .guest-card {
+            border-radius: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .guest-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.12);
+        }
+        .guest-card-body {
+            padding: 1.5rem;
+        }
+        .guest-card-title {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .guest-action {
+            min-width: 130px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <div class="row" style="height: 3.5rem">
+            <div class="col">
+                <nav class="navbar bg-body-tertiary fixed-top">
+                    <div class="container-fluid">
+                        <a href="houseMenu.html" class="navbar-brand" href="#">Vila Entre Chaves</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu Name</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item row">
+                                <div class="col-10">
+                                    <a class="nav-link active" aria-current="page" href="#">Item Type 1</a>
+                                </div>
+                                <div class="col-2">
+                                    <a class="nav-link active btn btn-primary d-flex align-items-center justify-content-center" style="height: 90%;" aria-current="page" href="#">-</a>
+                                </div>
+                            </li>
+                            <li class="nav-item row">
+                                <div class="col-10">
+                                    <a class="nav-link active" aria-current="page" href="#">Item Type 2</a>
+                                </div>
+                                <div class="col-2">
+                                    <a class="nav-link active btn btn-primary d-flex align-items-center justify-content-center" style="height: 90%;" aria-current="page" href="#">-</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active btn btn-primary d-flex align-items-center justify-content-center" aria-current="page" href="#">+</a>
+                            </li>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        
+    </div>
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content text-center">
+            <h1 class="hero-title">Amendoeira</h1>
+            <p class="hero-plan">Plano: Conforto</p>
+            <p class="hero-subtitle">Admin dashboard for house details, rooms, and current guests.</p>
+        </div>
+    </section>
+    <section class="rooms-section container">
+        <div class="text-center mb-4">
+            <h2 class="section-heading">Amendoeira Rooms</h2>
+            <p class="text-muted">Current occupancy status for the primary house rooms.</p>
+        </div>
+        <div class="row justify-content-center g-4">
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="card room-card shadow-sm w-100">
+                    <img src="./Images/amendoeira_rooms/master_suite.jpg" class="card-img-top" alt="Master Suite">
+                    <div class="card-body room-card-body">
+                        <h5 class="card-title">Master Suite</h5>
+                        <p class="card-text mb-1"><strong>Guests:</strong> 2 / 2</p>
+                        <p class="card-text mb-0">João Silva, Ana Pereira</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="card room-card shadow-sm w-100">
+                    <img src="./Images/amendoeira_rooms/bananeira_suite.jpg" class="card-img-top" alt="Bananeira Suite">
+                    <div class="card-body room-card-body">
+                        <h5 class="card-title">Bananeira Suite</h5>
+                        <p class="card-text mb-1"><strong>Guests:</strong> 1 / 2</p>
+                        <p class="card-text mb-0">Carlos Mendes</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="card room-card shadow-sm w-100">
+                    <img src="./Images/amendoeira_rooms/cajueiro_suite.jpg" class="card-img-top" alt="Cajueiro Suite">
+                    <div class="card-body room-card-body">
+                        <h5 class="card-title">Cajueiro Suite</h5>
+                        <p class="card-text mb-1"><strong>Guests:</strong> 0 / 2</p>
+                        <p class="card-text mb-0">(Disponível)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="card room-card shadow-sm w-100">
+                    <img src="./Images/amendoeira_rooms/coqueiral_suite.jpg" class="card-img-top" alt="Coqueiral Suite">
+                    <div class="card-body room-card-body">
+                        <h5 class="card-title">Coqueiral Suite</h5>
+                        <p class="card-text mb-1"><strong>Guests:</strong> 1 / 2</p>
+                        <p class="card-text mb-0">Beatriz Lima</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="card room-card shadow-sm w-100">
+                    <img src="./Images/amendoeira_rooms/pitangueira_suite.jpg" class="card-img-top" alt="Pitangueira Suite">
+                    <div class="card-body room-card-body">
+                        <h5 class="card-title">Pitangueira Suite</h5>
+                        <p class="card-text mb-1"><strong>Guests:</strong> 0 / 2</p>
+                        <p class="card-text mb-0">(Disponível)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="guests-section container">
+        <div class="text-center mb-4">
+            <h2 class="section-heading">Guests in the House</h2>
+            <p class="text-muted">Monitor each guest and review their current kitchen orders.</p>
+        </div>
+        <div class="row justify-content-center g-4">
+            <div class="col-12 col-sm-6 col-lg-4 d-flex">
+                <div class="card guest-card shadow-sm w-100">
+                    <div class="card-body guest-card-body d-flex flex-column">
+                        <h5 class="guest-card-title">João Silva</h5>
+                        <p class="text-muted mb-4">Quarto: Master Suite</p>
+                        <button class="btn btn-outline-primary align-self-start guest-action">Ver pedidos</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 d-flex">
+                <div class="card guest-card shadow-sm w-100">
+                    <div class="card-body guest-card-body d-flex flex-column">
+                        <h5 class="guest-card-title">Ana Pereira</h5>
+                        <p class="text-muted mb-4">Quarto: Master Suite</p>
+                        <button class="btn btn-outline-primary align-self-start guest-action">Ver pedidos</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 d-flex">
+                <div class="card guest-card shadow-sm w-100">
+                    <div class="card-body guest-card-body d-flex flex-column">
+                        <h5 class="guest-card-title">Carlos Mendes</h5>
+                        <p class="text-muted mb-4">Quarto: Bananeira Suite</p>
+                        <button class="btn btn-outline-primary align-self-start guest-action">Ver pedidos</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 d-flex">
+                <div class="card guest-card shadow-sm w-100">
+                    <div class="card-body guest-card-body d-flex flex-column">
+                        <h5 class="guest-card-title">Beatriz Lima</h5>
+                        <p class="text-muted mb-4">Quarto: Coqueiral Suite</p>
+                        <button class="btn btn-outline-primary align-self-start guest-action">Ver pedidos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</html>
