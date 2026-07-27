@@ -1,10 +1,10 @@
-
+import java.math.BigDecimal;
 
 public class Experience {
     private String name;
-    private float cost;
+    private BigDecimal cost;
 
-    public Experience(String name, float cost) {
+    public Experience(String name, BigDecimal cost) {
         this.name = name;
         this.cost = cost;
     }
@@ -13,7 +13,7 @@ public class Experience {
         return this.name;
     }
 
-    public float getPrice() {
+    public BigDecimal getPrice() {
         return this.cost;
     }
 }

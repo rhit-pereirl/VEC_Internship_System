@@ -1,8 +1,10 @@
+import java.math.BigDecimal;
+
 public abstract class MenuItem {
     private String name;
-    private float cost;
+    private BigDecimal cost;
 
-    public MenuItem(String name, float cost) {
+    public MenuItem(String name, BigDecimal cost) {
         this.name = name;
         this.cost = cost;
     }
@@ -11,11 +13,11 @@ public abstract class MenuItem {
         this.name = name;
     }
 
-    public void setCost(float price) {
+    public void setCost(BigDecimal price) {
         this.cost = price;
     }
 
-    public float getPrice() {
+    public BigDecimal getPrice() {
         return this.cost;
     }
 

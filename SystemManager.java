@@ -1,4 +1,5 @@
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class SystemManager {
@@ -97,15 +98,15 @@ public class SystemManager {
         menus.add(new Menu(menuType));
     }
 
-    public void addFood(String name, float cost) {
+    public void addFood(String name, BigDecimal cost) {
         menuItems.add(new Food(name, cost));
     }
 
-    public void addBeverage(String name, float cost) {
+    public void addBeverage(String name, BigDecimal cost) {
         menuItems.add(new Beverage(name, cost));
     }
 
-    public void addExperience(String name, float cost) {
+    public void addExperience(String name, BigDecimal cost) {
         allExperiences.add(new Experience(name, cost));
     }
 
