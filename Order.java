@@ -1,18 +1,19 @@
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Order {
     
     private ArrayList<MenuItem> orderedItems;
 
-    private float calcPrice() {
-        float total = 0;
+    private BigDecimal calcPrice() {
+        BigDecimal total = BigDecimal.ZERO;
         for (MenuItem item: orderedItems) {
-            total += item.getPrice();
+            total.add(item.getPrice());
         }
         return total;
     }
 
-    public float getTotal() {
+    public BigDecimal getTotal() {
         return calcPrice();
     }
 
