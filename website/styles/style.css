@@ -20,4 +20,150 @@ main {
 body {
   margin: 0;
   min-height: 100vh;
+  background-color: #f8f9fa;
+  color: #212529;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+html.dark-theme body {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+html.dark-theme body .navbar,
+html.dark-theme body .offcanvas,
+html.dark-theme body .offcanvas-header,
+html.dark-theme body .offcanvas-body,
+html.dark-theme body .card,
+html.dark-theme body .modal-content,
+html.dark-theme body .modal-body,
+html.dark-theme body .list-group,
+html.dark-theme body .dropdown-menu,
+html.dark-theme body .table,
+html.dark-theme body .input-group-text,
+html.dark-theme body .form-control {
+  background-color: #1f1f1f !important;
+  color: #f5f5f5 !important;
+}
+
+html.dark-theme body .navbar-brand,
+html.dark-theme body .nav-link,
+html.dark-theme body .offcanvas-title,
+html.dark-theme body .btn-close,
+html.dark-theme body .text,
+html.dark-theme body .list-group-item,
+html.dark-theme body .card-title,
+html.dark-theme body .card-text,
+html.dark-theme body .table td,
+html.dark-theme body .table th,
+html.dark-theme body .modal-title,
+html.dark-theme body .modal-body label,
+html.dark-theme body .modal-body span,
+html.dark-theme body .hero-title,
+html.dark-theme body .hero-subtitle,
+html.dark-theme body .hero-plan,
+html.dark-theme body .section-heading,
+html.dark-theme body .text-muted {
+  color: #f5f5f5 !important;
+}
+
+html.dark-theme body .text-muted {
+  color: rgba(255,255,255,0.72) !important;
+}
+
+html.dark-theme body .text-bg-dark {
+  background-color: #252525 !important;
+  color: #f5f5f5 !important;
+}
+
+html.dark-theme body .bg-body-tertiary {
+  background-color: #1f1f1f !important;
+  color: #f5f5f5 !important;
+}
+
+html.dark-theme body .btn-outline-light {
+  color: #fff;
+  border-color: #fff;
+}
+
+html.dark-theme body .btn-outline-light:hover {
+  background-color: rgba(255,255,255,.15);
+}
+
+html.dark-theme body .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+html.dark-theme body .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+.theme-toggle {
+  margin-right: .5rem;
+  margin-left: .5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.35);
+  background-color: rgba(255,255,255,.16);
+  color: #fff;
+}
+
+html:not(.dark-theme) body .theme-toggle {
+  color: #212529;
+  border-color: rgba(0,0,0,.25);
+  background-color: rgba(0,0,0,.05);
+}
+
+.navbar.fixed-top {
+  z-index: 1040;
+}
+
+.page-container {
+  padding: 4.5rem 1.25rem 2rem;
+}
+
+.sidebar-panel {
+  margin-top: 3.5rem;
+  min-height: calc(100vh - 3.5rem);
+  background-color: #2b2f35;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+html:not(.dark-theme) body .sidebar-panel {
+  background-color: #e9ecef;
+  border-right: 1px solid rgba(0,0,0,0.08);
+}
+
+.card {
+  margin-top: 0;
+  height: 100%;
+}
+
+.content-grid {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 1.5rem;
+}
+
+.content-grid .col {
+  display: flex;
+}
+
+.content-grid .card-tile {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-grid .card-tile .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
