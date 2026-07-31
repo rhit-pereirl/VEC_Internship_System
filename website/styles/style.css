@@ -234,3 +234,11 @@ html:not(.dark-theme) body .sidebar-panel {
   flex-direction: column;
   justify-content: center;
 }
+
+.add-card-tile {
+  min-height: 100%;
+}
+
+.add-card-tile .btn {
+  min-height: 220px;
+}
