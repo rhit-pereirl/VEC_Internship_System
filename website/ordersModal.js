@@ -111,7 +111,10 @@
                   </div>
                   <div class="col-md-4">
                     <label class="form-label small mb-1">Categoria</label>
-                    <input class="form-control form-control-sm guest-order-new-category" placeholder="Food & beverage / Experience" />
+                    <select class="form-select form-select-sm guest-order-new-category">
+                      <option value="Food & beverage">Food & beverage</option>
+                      <option value="Experience">Experience</option>
+                    </select>
                   </div>
                   <div class="col-md-2">
                     <label class="form-label small mb-1">Valor</label>
@@ -166,7 +169,10 @@
               <input type="text" class="form-control form-control-sm guest-order-item-input" data-field="label" data-index="${index}" value="${item.label}" />
             </div>
             <div class="col-md-4">
-              <input type="text" class="form-control form-control-sm guest-order-item-input" data-field="category" data-index="${index}" value="${item.category}" />
+              <select class="form-select form-select-sm guest-order-item-input" data-field="category" data-index="${index}">
+                <option value="Food & beverage" ${item.category === 'Food & beverage' ? 'selected' : ''}>Food & beverage</option>
+                <option value="Experience" ${item.category === 'Experience' ? 'selected' : ''}>Experience</option>
+              </select>
             </div>
             <div class="col-md-2">
               <input type="number" step="0.01" min="0" class="form-control form-control-sm guest-order-item-input" data-field="amount" data-index="${index}" value="${item.amount.toFixed(2)}" />

@@ -53,6 +53,41 @@ html.dark-theme body .guest-bill-total {
   border-color: rgba(255,255,255,.14) !important;
 }
 
+html.dark-theme body .modal-content,
+html.dark-theme body .modal-header,
+html.dark-theme body .modal-body,
+html.dark-theme body .modal-footer {
+  background-color: #1f1f1f !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255,255,255,.14) !important;
+}
+
+html.dark-theme body .modal .form-control,
+html.dark-theme body .modal .form-control::placeholder {
+  background-color: #2a2a2a !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255,255,255,.2) !important;
+}
+
+html.dark-theme body .modal .btn-outline-primary,
+html.dark-theme body .modal .btn-outline-secondary,
+html.dark-theme body .modal .btn-outline-danger {
+  color: #f5f5f5 !important;
+  border-color: rgba(255,255,255,.25) !important;
+  background-color: transparent !important;
+}
+
+html.dark-theme body .modal .btn-outline-primary:hover,
+html.dark-theme body .modal .btn-outline-secondary:hover,
+html.dark-theme body .modal .btn-outline-danger:hover {
+  background-color: rgba(255,255,255,.12) !important;
+}
+
+html.dark-theme body .modal .guest-bill-list .list-group-item {
+  background-color: transparent !important;
+  border-color: rgba(255,255,255,.12) !important;
+}
+
 html.dark-theme body {
   background-color: #121212;
   color: #f5f5f5;
