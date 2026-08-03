@@ -62,86 +62,41 @@
     <h1 style="margin-top: 5rem; margin-left: 3rem">Casas Vila Entre Chaves</h1>
 
     <div class="container-fluid page-container">
-        <div class="row row-cols-5">
-            <div class="col mb-2">
-                <div class="card" style="width: 100%; margin-top: 1rem; height: 100%;">
-                    <img src="./Images/cruzeiro_pic.jpg" class="card-img-top w-100 object-fit-cover" style="height: 50%;" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Casa Cruzeiro</h5>
-                        <p class="card-text" id="cruzeiro-ocupado">Casa Ocupada: Não</p>
-                        <p class="card-text" id="plano-tip">Plano: N/A</p>
-                        <a href="cruzeiro.html" class="btn btn-primary">Ver Detalhes</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-2">
-                <div class="card" style="width: 100%; margin-top: 1rem; height: 100%;">
-                    <img src="./Images/pescador_pic.jpeg" class="card-img-top w-100 object-fit-cover" style="height: 50%;" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Casa do Pescador</h5>
-                        <p class="card-text" id="cruzeiro-ocupado">Casa Ocupada: Não</p>
-                        <p class="card-text" id="plano-tip">Plano: N/A</p>
-                        <a href="pescador.html" class="btn btn-primary">Ver Detalhes</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-2">
-                <div class="card" style="width: 100%; margin-top: 1rem; height: 100%;">
-                    <img src="./Images/area_pic.jpg" class="card-img-top w-100 object-fit-cover" style="height: 50%;" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Casa Areia Colorida</h5>
-                        <p class="card-text" id="cruzeiro-ocupado">Casa Ocupada: Não</p>
-                        <p class="card-text" id="plano-tip">Plano: N/A</p>
-                        <a href="areia.html" class="btn btn-primary">Ver Detalhes</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-2">
-                <div class="card" style="width: 100%; margin-top: 1rem; height: 100%;">
-                    <img src="./Images/estrela_pic.jpg" class="card-img-top w-100 object-fit-cover" style="height: 50%;" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Casa Estrela do Mar</h5>
-                        <p class="card-text" id="cruzeiro-ocupado">Casa Ocupada: Não</p>
-                        <p class="card-text" id="plano-tip">Plano: N/A</p>
-                        <a href="estrela.html" class="btn btn-primary">Ver Detalhes</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-2">
-                <div class="card" style="width: 100%; margin-top: 1rem; height: 100%;">
-                    <img src="./Images/amendoeira_pic.jpeg" class="card-img-top w-100 object-fit-cover" style="height: 50%;" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Casa Amendoeira</h5>
-                        <p class="card-text" id="cruzeiro-ocupado">Casa Ocupada: Não</p>
-                        <p class="card-text" id="plano-tip">Plano: N/A</p>
-                        <a href="amendoeira.html" class="btn btn-primary">Ver Detalhes</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-2">
-                <div class="card" style="width: 100%; margin-top: 1rem; height: 100%;">
-                    <img src="./Images/mirante_pic.jpg" class="card-img-top w-100 object-fit-cover" style="height: 50%;" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Casa Mirante da Gameleira</h5>
-                        <p class="card-text" id="cruzeiro-ocupado">Casa Ocupada: Não</p>
-                        <p class="card-text" id="plano-tip">Plano: N/A</p>
-                        <a href="mirante.html" class="btn btn-primary">Ver Detalhes</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-2">
-                <div class="card" style="width: 100%; margin-top: 1rem; height: 100%;">
-                    <img src="./Images/corais_pic2.jpg" class="card-img-top w-100 object-fit-cover" style="height: 50%;" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Casa dos Corais</h5>
-                        <p class="card-text" id="cruzeiro-ocupado">Casa Ocupada: Não</p>
-                        <p class="card-text" id="plano-tip">Plano: N/A</p>
-                        <a href="corais.html" class="btn btn-primary">Ver Detalhes</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="row row-cols-5" id="houses-overview"></div>
     </div>
+
+    <script>
+        async function loadHouseOverview() {
+            try {
+                const response = await fetch('/api/houses');
+                const houses = await response.json();
+                const container = document.getElementById('houses-overview');
+                if (!container) return;
+                container.innerHTML = houses.map((house) => `
+                    <div class="col mb-2">
+                        <div class="card" style="width: 100%; margin-top: 1rem; height: 100%;">
+                            <img src="${house.image}" class="card-img-top w-100 object-fit-cover" style="height: 50%;" alt="${house.name}">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">${house.name}</h5>
+                                <p class="card-text">Casa Ocupada: ${house.occupied ? 'Sim' : 'Não'}</p>
+                                <p class="card-text">Plano: ${house.plan}</p>
+                                <a href="${house.id}.html" class="btn btn-primary">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Unable to load houses overview', error);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadHouseOverview);
+        } else {
+            loadHouseOverview();
+        }
+    </script>
+
 
 </body>
 

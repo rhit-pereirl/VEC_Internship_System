@@ -26,11 +26,55 @@
     return `${name.trim()}||${room.trim()}`;
   }
 
+  function getHouseIdFromPath() {
+    const currentPath = window.location.pathname.split('/').pop() || '';
+    const houseMap = {
+      cruzeiro: 'cruzeiro.html',
+      pescador: 'pescador.html',
+      areia: 'areia.html',
+      estrela: 'estrela.html',
+      amendoeira: 'amendoeira.html',
+      mirante: 'mirante.html',
+      corais: 'corais.html'
+    };
+    return Object.keys(houseMap).find((id) => houseMap[id] === currentPath) || '';
+  }
+
+  async function persistGuestOrders(guestData) {
+    if (!guestData?.guestId) {
+      return;
+    }
+
+    try {
+      await fetch('/api/guest-orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ guestId: guestData.guestId, items: guestData.items })
+      });
+    } catch (error) {
+      console.error('Unable to save guest orders', error);
+    }
+  }
+
   function cloneDefaultBill() {
     return defaultBillItems.map((item) => ({ ...item }));
   }
 
-  function initGuestStore() {
+  async function initGuestStore() {
+    const houseId = getHouseIdFromPath();
+    let guests = [];
+
+    if (houseId) {
+      try {
+        const response = await fetch(`/api/guests/${houseId}`);
+        guests = await response.json();
+      } catch (error) {
+        console.error('Unable to load guests from server', error);
+      }
+    }
+
+    const guestMap = new Map(guests.map((guest) => [guest.id, guest]));
+
     document.querySelectorAll('.guest-card').forEach((guestCard) => {
       if (guestCard.classList.contains('guest-add-card')) {
         return;
@@ -39,15 +83,20 @@
       const guestTitle = guestCard.querySelector('.guest-card-title');
       const guestName = guestTitle?.textContent?.trim();
       const roomName = getGuestRoom(guestCard);
+      const guestId = guestCard.dataset.guestId || '';
       const guestKey = makeGuestKey(guestName, roomName);
 
       guestCard.dataset.guestKey = guestKey;
 
+      const serverGuest = guestMap.get(guestId) || guests.find((item) => item.name === guestName && item.roomId === guestCard.dataset.roomId);
+      const savedItems = serverGuest?.orders && serverGuest.orders.length > 0 ? serverGuest.orders : cloneDefaultBill();
+
       if (!guestOrderStore.has(guestKey)) {
         guestOrderStore.set(guestKey, {
+          guestId: serverGuest?.id || guestId,
           guestName,
           roomName,
-          items: cloneDefaultBill()
+          items: savedItems
         });
       }
     });
@@ -188,10 +237,10 @@
     subtotalElement.textContent = formatCurrency(subtotal);
   }
 
-  function openGuestOrders(guestKey) {
+  function openGuestOrders(guestKey, guestId) {
     if (!guestOrderStore.has(guestKey)) {
       const [name, room] = guestKey.split('||');
-      guestOrderStore.set(guestKey, { guestName: name, roomName: room, items: cloneDefaultBill() });
+      guestOrderStore.set(guestKey, { guestId, guestName: name, roomName: room, items: cloneDefaultBill() });
     }
 
     const modalElement = document.getElementById('guest-orders-modal');
@@ -209,7 +258,7 @@
     }
   }
 
-  function addGuestCard(guestName, roomName) {
+  async function addGuestCard(guestName, roomName) {
     const guestRow = document.querySelector('.guests-section .row');
     if (!guestRow) {
       return;
@@ -220,9 +269,25 @@
       return;
     }
 
+    const houseId = getHouseIdFromPath();
+    let createdGuest = null;
+
+    if (houseId) {
+      try {
+        const response = await fetch('/api/guests', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: guestName, houseId, roomName })
+        });
+        createdGuest = await response.json();
+      } catch (error) {
+        console.error('Unable to create guest', error);
+      }
+    }
+
     const newCardHtml = `
       <div class="col-12 col-sm-6 col-lg-4 d-flex">
-        <div class="card guest-card shadow-sm w-100" data-guest-key="${guestKey}">
+        <div class="card guest-card shadow-sm w-100" data-guest-key="${guestKey}" data-guest-id="${createdGuest?.id || ''}">
           <div class="card-body guest-card-body d-flex flex-column">
             <h5 class="guest-card-title">${guestName}</h5>
             <p class="text-muted mb-4">Quarto: ${roomName}</p>
@@ -239,7 +304,7 @@
       guestRow.insertAdjacentHTML('beforeend', newCardHtml);
     }
 
-    guestOrderStore.set(guestKey, { guestName, roomName, items: cloneDefaultBill() });
+    guestOrderStore.set(guestKey, { guestId: createdGuest?.id || '', guestName, roomName, items: cloneDefaultBill() });
   }
 
   function updateGuestStoreItem(guestKey, index, field, value) {
@@ -256,6 +321,7 @@
     }
 
     renderGuestBill(guestKey);
+    persistGuestOrders(guestData);
   }
 
   function removeGuestStoreItem(guestKey, index) {
@@ -265,6 +331,7 @@
     }
     guestData.items.splice(index, 1);
     renderGuestBill(guestKey);
+    persistGuestOrders(guestData);
   }
 
   function addGuestStoreItem(guestKey, item) {
@@ -274,6 +341,7 @@
     }
     guestData.items.push(item);
     renderGuestBill(guestKey);
+    persistGuestOrders(guestData);
   }
 
   function handleGuestActionClick(button) {
@@ -287,7 +355,7 @@
       getGuestRoom(guestCard)
     );
 
-    openGuestOrders(guestKey);
+    openGuestOrders(guestKey, guestCard.dataset.guestId);
   }
 
   function handleAddGuestClick(button) {
@@ -391,12 +459,12 @@
     });
   }
 
-  function init() {
+  async function init() {
     if (!document.getElementById('guest-orders-modal')) {
       document.body.insertAdjacentHTML('beforeend', buildModalMarkup());
     }
 
-    initGuestStore();
+    await initGuestStore();
     ensureAddGuestCard();
     attachEventHandlers();
   }

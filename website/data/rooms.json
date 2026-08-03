@@ -1,0 +1,31 @@
+[
+  {
+    "id": "cruzeiro-master",
+    "houseId": "cruzeiro",
+    "name": "Master Suite",
+    "image": "./Images/cruzeiro_rooms/master_suite_pic.jpg",
+    "guestIds": [
+      "lucas-silva",
+      "marina-costa"
+    ]
+  },
+  {
+    "id": "cruzeiro-acerola",
+    "houseId": "cruzeiro",
+    "name": "Suite Acerola",
+    "image": "./Images/cruzeiro_rooms/suite_acerola_pic.jpg",
+    "guestIds": [
+      "ana-rocha"
+    ]
+  },
+  {
+    "id": "cruzeiro-caju",
+    "houseId": "cruzeiro",
+    "name": "Suite Caju",
+    "image": "./Images/cruzeiro_rooms/suite_caju_pic.jpg",
+    "guestIds": [
+      "mateus-lima",
+      "sofia-alves"
+    ]
+  }
+]

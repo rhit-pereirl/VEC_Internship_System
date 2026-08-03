@@ -1,0 +1,37 @@
+[
+  {
+    "id": "lucas-silva",
+    "name": "Lucas Silva",
+    "houseId": "cruzeiro",
+    "roomId": "cruzeiro-master",
+    "orders": []
+  },
+  {
+    "id": "marina-costa",
+    "name": "Marina Costa",
+    "houseId": "cruzeiro",
+    "roomId": "cruzeiro-master",
+    "orders": []
+  },
+  {
+    "id": "ana-rocha",
+    "name": "Ana Rocha",
+    "houseId": "cruzeiro",
+    "roomId": "cruzeiro-acerola",
+    "orders": []
+  },
+  {
+    "id": "mateus-lima",
+    "name": "Mateus Lima",
+    "houseId": "cruzeiro",
+    "roomId": "cruzeiro-caju",
+    "orders": []
+  },
+  {
+    "id": "sofia-alves",
+    "name": "Sofia Alves",
+    "houseId": "cruzeiro",
+    "roomId": "cruzeiro-caju",
+    "orders": []
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "menu-1",
+    "name": "Menu 1",
+    "description": "Seasonal tasting menu",
+    "image": ""
+  },
+  {
+    "id": "menu-1785777990902",
+    "name": "Test Menu",
+    "description": "Persisted from browser interaction",
+    "image": ""
+  },
+  {
+    "id": "menu-1785778072544",
+    "name": "My second test menu",
+    "description": "among us",
+    "image": ""
+  }
+]

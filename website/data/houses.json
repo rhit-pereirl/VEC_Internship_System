@@ -1,0 +1,51 @@
+[
+  {
+    "id": "cruzeiro",
+    "name": "Casa Cruzeiro",
+    "plan": "Executivo",
+    "occupied": true,
+    "image": "./Images/cruzeiro_pic.jpg"
+  },
+  {
+    "id": "pescador",
+    "name": "Casa do Pescador",
+    "plan": "Conforto",
+    "occupied": true,
+    "image": "./Images/pescador_pic.jpeg"
+  },
+  {
+    "id": "areia",
+    "name": "Casa Areia Colorida",
+    "plan": "Executivo",
+    "occupied": true,
+    "image": "./Images/area_pic.jpg"
+  },
+  {
+    "id": "estrela",
+    "name": "Casa Estrela do Mar",
+    "plan": "Conforto",
+    "occupied": true,
+    "image": "./Images/estrela_pic.jpg"
+  },
+  {
+    "id": "amendoeira",
+    "name": "Casa Amendoeira",
+    "plan": "Conforto",
+    "occupied": true,
+    "image": "./Images/amendoeira_pic.jpeg"
+  },
+  {
+    "id": "mirante",
+    "name": "Casa Mirante da Gameleira",
+    "plan": "Executivo",
+    "occupied": true,
+    "image": "./Images/mirante_pic.jpg"
+  },
+  {
+    "id": "corais",
+    "name": "Casa dos Corais",
+    "plan": "Conforto",
+    "occupied": true,
+    "image": "./Images/corais_pic2.jpg"
+  }
+]
