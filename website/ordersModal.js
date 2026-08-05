@@ -8,6 +8,7 @@
   ];
 
   const guestOrderStore = new Map();
+  let roomsForHouse = [];
 
   function formatCurrency(value) {
     return new Intl.NumberFormat('pt-BR', {
@@ -68,6 +69,12 @@
       try {
         const response = await fetch(`/api/guests/${houseId}`);
         guests = await response.json();
+        try {
+          const roomsResp = await fetch(`/api/rooms/${houseId}`);
+          roomsForHouse = await roomsResp.json();
+        } catch (err) {
+          roomsForHouse = [];
+        }
       } catch (error) {
         console.error('Unable to load guests from server', error);
       }
@@ -103,6 +110,7 @@
   }
 
   function buildGuestAddCard() {
+    const roomOptions = (roomsForHouse || []).map((r) => `<option value="${(r.name || '').replace(/"/g,'\"')}">${(r.name || '')}</option>`).join('');
     return `
       <div class="col-12 col-md-6 col-lg-4 d-flex">
         <div class="card guest-card guest-add-card shadow-sm w-100">
@@ -111,7 +119,11 @@
             <label class="form-label small mb-1" for="guestAddName">Nome</label>
             <input id="guestAddName" class="form-control form-control-sm mb-2 guest-add-name" placeholder="Nome do hóspede" />
             <label class="form-label small mb-1" for="guestAddRoom">Quarto</label>
-            <input id="guestAddRoom" class="form-control form-control-sm mb-3 guest-add-room" placeholder="Suite Master" />
+            <select id="guestAddRoomSelect" class="form-select form-select-sm mb-2 guest-add-room">
+              ${roomOptions}
+              <option value="__new__">-- Criar novo quarto --</option>
+            </select>
+            <input id="guestAddRoomCustom" class="form-control form-control-sm mb-3 guest-add-room-custom" placeholder="Suite Master" style="display:none" />
             <button class="btn btn-primary guest-add-button mt-auto">Adicionar hóspede</button>
           </div>
         </div>
@@ -125,6 +137,7 @@
       return;
     }
     if (!document.querySelector('.guest-add-card')) {
+      // buildGuestAddCard uses roomsForHouse which should have been loaded in initGuestStore
       guestRow.insertAdjacentHTML('beforeend', buildGuestAddCard());
     }
   }
@@ -365,9 +378,20 @@
     }
 
     const nameInput = card.querySelector('.guest-add-name');
-    const roomInput = card.querySelector('.guest-add-room');
+    const roomSelect = card.querySelector('.guest-add-room');
+    const roomCustom = card.querySelector('.guest-add-room-custom');
     const guestName = nameInput?.value.trim();
-    const roomName = roomInput?.value.trim();
+    let roomName = '';
+    if (roomSelect) {
+      const val = roomSelect.value;
+      if (val === '__new__') {
+        roomName = roomCustom?.value.trim();
+      } else {
+        roomName = val;
+      }
+    } else {
+      roomName = card.querySelector('.guest-add-room')?.value.trim() || '';
+    }
 
     if (!guestName || !roomName) {
       alert('Por favor, informe o nome do hóspede e o quarto.');
@@ -376,7 +400,8 @@
 
     addGuestCard(guestName, roomName);
     nameInput.value = '';
-    roomInput.value = '';
+    if (roomCustom) roomCustom.value = '';
+    if (roomSelect) roomSelect.selectedIndex = 0;
   }
 
   function handleModalClick(event) {
@@ -456,6 +481,19 @@
 
     document.addEventListener('input', function (event) {
       handleModalInputChange(event);
+    });
+
+    document.addEventListener('change', function (event) {
+      const sel = event.target.closest('.guest-add-room');
+      if (sel && sel.tagName === 'SELECT') {
+        const card = sel.closest('.guest-add-card');
+        const custom = card?.querySelector('.guest-add-room-custom');
+        if (sel.value === '__new__') {
+          if (custom) custom.style.display = '';
+        } else {
+          if (custom) custom.style.display = 'none';
+        }
+      }
     });
   }
 

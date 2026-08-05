@@ -6,7 +6,8 @@
     "image": "./Images/cruzeiro_rooms/master_suite_pic.jpg",
     "guestIds": [
       "lucas-silva",
-      "marina-costa"
+      "marina-costa",
+      "final-test-guest-1785952544520"
     ]
   },
   {
@@ -26,6 +27,42 @@
     "guestIds": [
       "mateus-lima",
       "sofia-alves"
+    ]
+  },
+  {
+    "id": "amendoeira-bananeira-suite-1785951902409",
+    "houseId": "amendoeira",
+    "name": "Bananeira Suite",
+    "image": "",
+    "guestIds": [
+      "lucas-pereira-1785951902409"
+    ]
+  },
+  {
+    "id": "cruzeiro-suite-test-1785952000674",
+    "houseId": "cruzeiro",
+    "name": "Suite Test",
+    "image": "",
+    "guestIds": [
+      "automated-test-guest-1785952000674"
+    ]
+  },
+  {
+    "id": "areia-suite-azul-1785952080679",
+    "houseId": "areia",
+    "name": "Suite Azul",
+    "image": "",
+    "guestIds": [
+      "lucas-pereira-1785952080679"
+    ]
+  },
+  {
+    "id": "areia-test-1785952094838",
+    "houseId": "areia",
+    "name": "TEst",
+    "image": "",
+    "guestIds": [
+      "teste-1785952094838"
     ]
   }
 ]

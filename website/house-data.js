@@ -70,6 +70,8 @@
           </div>
         `).join('');
 
+        const roomOptions = (rooms || []).map((r) => `<option value="${(r.name||'').replace(/"/g,'\\"')}">${(r.name||'')}</option>`).join('');
+
         const addGuestCardHtml = `
           <div class="col-12 col-md-6 col-lg-4 d-flex">
             <div class="card guest-card guest-add-card shadow-sm w-100">
@@ -78,7 +80,11 @@
                 <label class="form-label small mb-1" for="guestAddName">Nome</label>
                 <input id="guestAddName" class="form-control form-control-sm mb-2 guest-add-name" placeholder="Nome do hóspede" />
                 <label class="form-label small mb-1" for="guestAddRoom">Quarto</label>
-                <input id="guestAddRoom" class="form-control form-control-sm mb-3 guest-add-room" placeholder="Suite Master" />
+                <select id="guestAddRoomSelect" class="form-select form-select-sm mb-2 guest-add-room">
+                  ${roomOptions}
+                  <option value="__new__">-- Criar novo quarto --</option>
+                </select>
+                <input id="guestAddRoomCustom" class="form-control form-control-sm mb-3 guest-add-room-custom" placeholder="Suite Master" style="display:none" />
                 <button class="btn btn-primary guest-add-button mt-auto">Adicionar hóspede</button>
               </div>
             </div>

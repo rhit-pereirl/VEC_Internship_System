@@ -64,5 +64,40 @@
     "houseId": "cruzeiro",
     "roomId": "cruzeiro-caju",
     "orders": []
+  },
+  {
+    "id": "lucas-pereira-1785951902409",
+    "name": "Lucas Pereira",
+    "houseId": "amendoeira",
+    "roomId": "amendoeira-bananeira-suite-1785951902409",
+    "orders": []
+  },
+  {
+    "id": "automated-test-guest-1785952000674",
+    "name": "Automated Test Guest",
+    "houseId": "cruzeiro",
+    "roomId": "cruzeiro-suite-test-1785952000674",
+    "orders": []
+  },
+  {
+    "id": "lucas-pereira-1785952080679",
+    "name": "Lucas Pereira",
+    "houseId": "areia",
+    "roomId": "areia-suite-azul-1785952080679",
+    "orders": []
+  },
+  {
+    "id": "teste-1785952094838",
+    "name": "Teste",
+    "houseId": "areia",
+    "roomId": "areia-test-1785952094838",
+    "orders": []
+  },
+  {
+    "id": "final-test-guest-1785952544520",
+    "name": "Final Test Guest",
+    "houseId": "cruzeiro",
+    "roomId": "cruzeiro-master",
+    "orders": []
   }
 ]

@@ -4,5 +4,11 @@
     "name": "Test Menu",
     "description": "Persisted from browser interaction",
     "image": ""
+  },
+  {
+    "id": "menu-1785951833286",
+    "name": "Test Menu 2",
+    "description": "Hehehehe",
+    "image": ""
   }
 ]

@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": "item-1785951794395",
+    "menuId": "menu-1785777990902",
+    "name": "Bread Basket",
+    "category": "Appetizers",
+    "price": 20,
+    "image": ""
+  },
+  {
+    "id": "item-1785951845009",
+    "menuId": "menu-1785951833286",
+    "name": "Orang",
+    "category": "Appetizers",
+    "price": 5,
+    "image": ""
+  }
+]
