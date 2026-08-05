@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Edit Menu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel='stylesheet' href='styles/style.css'>
+    <script>
+        document.documentElement.classList.add('dark-theme');
+    </script>
+    <script src="source.js"></script>
+</head>
+<body>
+    <!-- NAVBAR AREA -->
+    <nav class="navbar bg-body-tertiary fixed-top">
+        <div class="container-fluid text d-flex align-items-center">
+            <a class="navbar-brand me-2" href="#">Edit Menu</a>
+            <button class="btn btn-sm theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">🌙</button>
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Vila Entre Chaves</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="houseMenu.html">Houses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="menus.html">Menus</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="activities.html">Activities</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="d-flex">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar-panel" style="width: 16rem;">
+            <hr>
+            <h6 class="text-white mb-3">Categories</h6>
+            <ul class="nav nav-pills flex-column mb-auto" id="category-list" style="margin-right: .2rem;"></ul>
+            <div class="input-group mt-3">
+                <input id="new-category-name" type="text" class="form-control form-control-sm" placeholder="New category">
+                <button class="btn btn-primary btn-sm" type="button" id="add-category-btn">Add</button>
+            </div>
+            <hr>
+        </div>
+
+        <div class="container-fluid page-container">
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <div id="menu-edit-header" class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 mb-4"></div>
+                </div>
+            </div>
+
+            <div id="menu-edit-error" class="alert alert-danger d-none" role="alert"></div>
+
+            <div class="row mb-4">
+                <div class="col d-flex flex-wrap gap-2">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItemModal">Add Item</button>
+                    <a href="menus.html" class="btn btn-outline-secondary">Back to Menus</a>
+                </div>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 row-cols-xxl-5 g-4 content-grid" id="menu-items-grid"></div>
+        </div>
+    </div>
+
+    <!-- Navbar Modal -->
+    <div class="modal fade" id="navModal" tabindex="-1" aria-labelledby="navModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="navModalLabel">Add Item Type</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Item Type</span>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Item Add Modal -->
+    <div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addItemModalLabel">Add Menu Item</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="add-menu-item-form">
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Item Name</span>
+                            <input id="menu-item-name" type="text" class="form-control" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="menu-item-image">Item Image</label>
+                            <input id="menu-item-image" type="file" accept="image/*" class="form-control">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Category</span>
+                            <select id="menu-item-category" class="form-select" required></select>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Price</span>
+                            <input id="menu-item-price" type="number" min="0" step="0.01" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add Item</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuEditHeader = document.getElementById('menu-edit-header');
+        const menuItemsGrid = document.getElementById('menu-items-grid');
+        const menuEditError = document.getElementById('menu-edit-error');
+        const addMenuItemForm = document.getElementById('add-menu-item-form');
+        const addItemModal = document.getElementById('addItemModal');
+        const categoryList = document.getElementById('category-list');
+        const newCategoryName = document.getElementById('new-category-name');
+        const addCategoryBtn = document.getElementById('add-category-btn');
+        const categorySelect = document.getElementById('menu-item-category');
+        const menuItemImage = document.getElementById('menu-item-image');
+        const apiBase = window.location.origin !== 'null' ? window.location.origin : 'http://localhost:3000';
+
+        const params = new URLSearchParams(window.location.search);
+        const menuId = params.get('menuId');
+
+        const defaultCategories = ['Appetizers', 'Mains', 'Desserts', 'Drinks', 'Specials'];
+        const storedCategories = JSON.parse(localStorage.getItem('menuEditCategories') || 'null');
+        const categories = Array.isArray(storedCategories) && storedCategories.length ? storedCategories : [...defaultCategories];
+        let selectedCategory = categories[0] || '';
+        let cachedMenu = null;
+        let cachedItems = [];
+
+        function saveCategories() {
+            localStorage.setItem('menuEditCategories', JSON.stringify(categories));
+        }
+
+        function renderCategories() {
+            categoryList.innerHTML = categories.map((category) => `
+                <li class="nav-item row mb-2" data-category="${category}">
+                    <div class="col-10">
+                        <a href="#" class="nav-link ${selectedCategory === category ? 'active' : 'text-white'} category-select-link">${category}</a>
+                    </div>
+                    <div class="col-2 d-flex justify-content-end">
+                        <button class="btn btn-outline-light btn-sm remove-category-btn" type="button" aria-label="Remove category">×</button>
+                    </div>
+                </li>
+            `).join('');
+            renderCategoryOptions();
+        }
+
+        function renderCategoryOptions() {
+            categorySelect.innerHTML = categories.map((category) => `
+                <option value="${category}">${category}</option>
+            `).join('');
+            categorySelect.value = selectedCategory;
+        }
+
+        function setSelectedCategory(category) {
+            if (!categories.includes(category)) return;
+            selectedCategory = category;
+            renderCategories();
+        }
+
+        categoryList.addEventListener('click', async (event) => {
+            event.preventDefault();
+            const button = event.target.closest('.remove-category-btn');
+            if (button) {
+                const item = button.closest('[data-category]');
+                const category = item?.dataset.category;
+                if (!category) return;
+                if (categories.length <= 1) return;
+                if (!confirm(`Delete the category "${category}" and all items inside it? This cannot be undone.`)) {
+                    return;
+                }
+
+                const itemsToDelete = cachedItems.filter((menuItem) => menuItem.category === category);
+                try {
+                    await Promise.all(itemsToDelete.map((menuItem) =>
+                        fetch(`${apiBase}/api/menus/${menuId}/items/${menuItem.id}`, { method: 'DELETE' })
+                            .then((response) => {
+                                if (!response.ok) {
+                                    throw new Error('Failed to delete item');
+                                }
+                            })
+                    ));
+                } catch (error) {
+                    showError('Unable to remove category items.');
+                    console.error(error);
+                    return;
+                }
+
+                const index = categories.indexOf(category);
+                categories.splice(index, 1);
+                cachedItems = cachedItems.filter((menuItem) => menuItem.category !== category);
+                if (selectedCategory === category) {
+                    selectedCategory = categories[0];
+                }
+                saveCategories();
+                renderCategories();
+                await loadMenu();
+                return;
+            }
+
+            const item = event.target.closest('[data-category]');
+            if (!item) return;
+            setSelectedCategory(item.dataset.category);
+            if (cachedMenu && cachedItems.length) {
+                renderMenu(cachedMenu, cachedItems);
+            }
+        });
+
+        addCategoryBtn.addEventListener('click', () => {
+            const value = newCategoryName.value.trim();
+            if (!value || categories.includes(value)) return;
+            categories.push(value);
+            selectedCategory = value;
+            saveCategories();
+            renderCategories();
+            newCategoryName.value = '';
+        });
+
+        newCategoryName.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                addCategoryBtn.click();
+            }
+        });
+
+        if (!menuId) {
+            showError('No menu selected. Return to the menus page and choose a menu to edit.');
+        } else {
+            renderCategories();
+            loadMenu();
+        }
+
+        function showError(message) {
+            menuEditError.textContent = message;
+            menuEditError.classList.remove('d-none');
+        }
+
+        function hideError() {
+            menuEditError.classList.add('d-none');
+        }
+
+        async function loadMenu() {
+            hideError();
+            try {
+                const [menuResponse, itemsResponse] = await Promise.all([
+                    fetch(`${apiBase}/api/menus/${menuId}`),
+                    fetch(`${apiBase}/api/menus/${menuId}/items`)
+                ]);
+
+                if (!menuResponse.ok) {
+                    showError('Menu not found.');
+                    return;
+                }
+
+                const menu = await menuResponse.json();
+                const items = itemsResponse.ok ? await itemsResponse.json() : [];
+                cachedMenu = menu;
+                cachedItems = items;
+                renderMenu(menu, items);
+            } catch (error) {
+                showError('Unable to load menu.');
+                console.error(error);
+            }
+        }
+
+        function renderMenu(menu, items) {
+            menuEditHeader.innerHTML = `
+                <div>
+                    <h1 class="h3 mb-1">${menu.name}</h1>
+                    <p class="text-muted mb-0">${menu.description || 'No description yet.'}</p>
+                </div>
+                <div class="text-end">
+                    <div class="text-muted small">ID: ${menu.id}</div>
+                    <div class="badge bg-secondary mt-1">Category: ${selectedCategory}</div>
+                </div>
+            `;
+
+            const filteredItems = items.filter((item) => item.category === selectedCategory);
+            const itemCards = filteredItems.length ? filteredItems.map((item) => {
+                const imageUrl = item.image || `https://via.placeholder.com/400x200?text=${encodeURIComponent(item.name)}`;
+                const priceValue = Number(item.price ?? item.amount ?? 0).toFixed(2);
+                return `
+                    <div class="col">
+                        <div class="card card-tile h-100">
+                            <img src="${imageUrl}" class="card-img-top" alt="${item.name}" style="height: 180px; object-fit: cover;">
+                            <div class="card-body d-flex flex-column text-center">
+                                <h5 class="card-title">${item.name}</h5>
+                                <p class="card-text">${item.category}</p>
+                                <p class="card-text text-muted mb-3">R$ ${priceValue}</p>
+                                <button class="btn btn-outline-danger mt-auto remove-item-btn" data-item-id="${item.id}">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('') : '';
+
+            menuItemsGrid.innerHTML = itemCards + (filteredItems.length ? '' : `<div class="col-12"><div class="alert alert-secondary">No ${selectedCategory} items yet. Use the button above to add one.</div></div>`);
+        }
+
+        menuItemsGrid.addEventListener('click', async (event) => {
+            const button = event.target.closest('.remove-item-btn');
+            if (!button) return;
+            const itemId = button.dataset.itemId;
+            if (!itemId) return;
+
+            if (!confirm('Delete this menu item? This action cannot be undone.')) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`${apiBase}/api/menus/${menuId}/items/${itemId}`, { method: 'DELETE' });
+                if (response.ok) {
+                    await loadMenu();
+                } else {
+                    showError('Unable to remove item.');
+                }
+            } catch (error) {
+                showError('Unable to remove item.');
+                console.error(error);
+            }
+        });
+
+        function readImageFile(file) {
+            return new Promise((resolve, reject) => {
+                if (!file) {
+                    resolve('');
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = () => resolve('');
+                reader.readAsDataURL(file);
+            });
+        }
+
+        addMenuItemForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const name = document.getElementById('menu-item-name').value.trim();
+            const category = document.getElementById('menu-item-category').value.trim();
+            const priceInput = document.getElementById('menu-item-price').value.trim().replace(',', '.');
+            const price = Number(priceInput);
+            const imageFile = menuItemImage.files[0];
+
+            if (!name || !category || Number.isNaN(price)) {
+                showError('Please enter a valid item name, category, and price.');
+                return;
+            }
+
+            try {
+                const image = await readImageFile(imageFile);
+                const response = await fetch(`${apiBase}/api/menus/${menuId}/items`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, category, price, image })
+                });
+
+                if (response.ok) {
+                    addMenuItemForm.reset();
+                    selectedCategory = category;
+                    if (!categories.includes(category)) {
+                        categories.push(category);
+                        saveCategories();
+                    }
+                    renderCategories();
+                    bootstrap.Modal.getInstance(addItemModal)?.hide();
+                    await loadMenu();
+                } else {
+                    showError('Unable to add item.');
+                }
+            } catch (error) {
+                showError('Unable to add item.');
+                console.error(error);
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -65,9 +65,21 @@ function seedData() {
     { id: 'menu-1', name: 'Menu 1', description: 'Seasonal tasting menu', image: '' }
   ]);
 
-  const menuItems = readJson(menuItemsFile, [
-    { id: 'item-1', menuId: 'menu-1', name: 'Breakfast buffet', category: 'Food & beverage', amount: 48 }
+  let menuItems = readJson(menuItemsFile, [
+    { id: 'item-1', menuId: 'menu-1', name: 'Breakfast buffet', category: 'Food & beverage', price: 48 }
   ]);
+
+  const migratedItems = menuItems.map((item) => {
+    if (item.price === undefined && item.amount !== undefined) {
+      return { ...item, price: Number(item.amount) };
+    }
+    return item;
+  });
+
+  if (JSON.stringify(migratedItems) !== JSON.stringify(menuItems)) {
+    writeJson(menuItemsFile, migratedItems);
+    menuItems = migratedItems;
+  }
 
   return { houses, rooms, guests, menus, menuItems };
 }
@@ -249,8 +261,12 @@ function handleApi(req, res, pathname) {
 
   if (pathname.startsWith('/api/menus/')) {
     const parts = pathname.split('/').filter(Boolean);
-    if (parts[1] && parts[2] === 'items') {
-      const menuId = parts[1];
+    const menuId = parts[2];
+    if (!menuId) {
+      return false;
+    }
+
+    if (parts[3] === 'items') {
       if (req.method === 'GET') {
         sendJson(res, 200, state.menuItems.filter((item) => item.menuId === menuId));
         return true;
@@ -259,18 +275,23 @@ function handleApi(req, res, pathname) {
       if (req.method === 'POST') {
         readBody(req)
           .then((body) => {
-            const { name, category, amount } = body;
+            const { name, category, amount, price, image } = body;
             if (!name || !category) {
               sendJson(res, 400, { error: 'Name and category are required' });
               return;
             }
+
+            const rawPrice = String(price ?? amount ?? '').trim().replace(',', '.');
+            const parsedPrice = Number(rawPrice);
+            const itemPrice = Number.isFinite(parsedPrice) ? parsedPrice : 0;
 
             const item = {
               id: `item-${Date.now()}`,
               menuId,
               name,
               category,
-              amount: Number(amount) || 0
+              price: itemPrice,
+              image: image || ''
             };
             state.menuItems.push(item);
             writeJson(menuItemsFile, state.menuItems);
@@ -281,6 +302,33 @@ function handleApi(req, res, pathname) {
           });
         return true;
       }
+
+      if (req.method === 'DELETE' && parts[4]) {
+        const itemId = parts[4];
+        const itemIndex = state.menuItems.findIndex((item) => item.id === itemId && item.menuId === menuId);
+        if (itemIndex === -1) {
+          sendJson(res, 404, { error: 'Menu item not found' });
+          return true;
+        }
+
+        state.menuItems.splice(itemIndex, 1);
+        writeJson(menuItemsFile, state.menuItems);
+        sendJson(res, 200, { success: true });
+        return true;
+      }
+
+      return true;
+    }
+
+    if (req.method === 'GET') {
+      const menu = state.menus.find((item) => item.id === menuId);
+      if (!menu) {
+        sendJson(res, 404, { error: 'Menu not found' });
+        return true;
+      }
+
+      sendJson(res, 200, menu);
+      return true;
     }
   }
 
