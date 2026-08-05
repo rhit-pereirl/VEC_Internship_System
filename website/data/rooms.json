@@ -6,8 +6,7 @@
     "image": "./Images/cruzeiro_rooms/master_suite_pic.jpg",
     "guestIds": [
       "lucas-silva",
-      "marina-costa",
-      "final-test-guest-1785952544520"
+      "marina-costa"
     ]
   },
   {
@@ -64,5 +63,12 @@
     "guestIds": [
       "teste-1785952094838"
     ]
+  },
+  {
+    "id": "cruzeiro-test-delete-room-1785953712410",
+    "houseId": "cruzeiro",
+    "name": "Test Delete Room",
+    "image": "",
+    "guestIds": []
   }
 ]

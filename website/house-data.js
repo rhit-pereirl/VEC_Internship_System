@@ -65,6 +65,7 @@
                 <h5 class="guest-card-title">${guest.name}</h5>
                 <p class="text-muted mb-4">Quarto: ${rooms.find((room) => room.id === guest.roomId)?.name || '—'}</p>
                 <button class="btn btn-outline-primary align-self-start guest-action">Ver pedidos</button>
+                <button class="btn btn-outline-danger align-self-start guest-delete mt-2">Excluir</button>
               </div>
             </div>
           </div>

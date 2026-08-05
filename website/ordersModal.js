@@ -9,12 +9,42 @@
 
   const guestOrderStore = new Map();
   let roomsForHouse = [];
+  let guestMap = new Map();
 
   function formatCurrency(value) {
     return new Intl.NumberFormat('pt-BR', {
       style: 'currency',
       currency: 'BRL'
     }).format(value);
+  }
+
+  function resolveGuestId(guestCard) {
+    if (!guestCard) {
+      return '';
+    }
+
+    const explicitId = guestCard.dataset.guestId?.trim();
+    if (explicitId) {
+      return explicitId;
+    }
+
+    const guestName = guestCard.querySelector('.guest-card-title')?.textContent?.trim();
+    const roomName = getGuestRoom(guestCard);
+    if (!guestName) {
+      return '';
+    }
+
+    const match = [...guestMap.values()].find((guest) => {
+      const guestRoomName = roomsForHouse.find((room) => room.id === guest.roomId)?.name || '';
+      return guest.name === guestName && guestRoomName === roomName;
+    });
+
+    if (match) {
+      guestCard.dataset.guestId = match.id;
+      return match.id;
+    }
+
+    return '';
   }
 
   function getGuestRoom(guestCard) {
@@ -80,7 +110,7 @@
       }
     }
 
-    const guestMap = new Map(guests.map((guest) => [guest.id, guest]));
+    guestMap = new Map(guests.map((guest) => [guest.id, guest]));
 
     document.querySelectorAll('.guest-card').forEach((guestCard) => {
       if (guestCard.classList.contains('guest-add-card')) {
@@ -90,7 +120,7 @@
       const guestTitle = guestCard.querySelector('.guest-card-title');
       const guestName = guestTitle?.textContent?.trim();
       const roomName = getGuestRoom(guestCard);
-      const guestId = guestCard.dataset.guestId || '';
+      const guestId = resolveGuestId(guestCard);
       const guestKey = makeGuestKey(guestName, roomName);
 
       guestCard.dataset.guestKey = guestKey;
@@ -357,6 +387,39 @@
     persistGuestOrders(guestData);
   }
 
+  async function deleteGuestCard(guestCard) {
+    if (!guestCard) {
+      return;
+    }
+
+    const guestId = resolveGuestId(guestCard);
+    if (!guestId) {
+      alert('Não foi possível identificar o hóspede para exclusão.');
+      return;
+    }
+
+    if (!confirm('Tem certeza de que deseja excluir este hóspede?')) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/guests/${guestId}`, {
+        method: 'DELETE'
+      });
+
+      if (!response.ok) {
+        const error = await response.json().catch(() => ({ error: 'Unable to delete guest' }));
+        alert(error.error || 'Não foi possível excluir o hóspede.');
+        return;
+      }
+
+      guestCard.remove();
+    } catch (error) {
+      console.error('Unable to delete guest', error);
+      alert('Não foi possível excluir o hóspede.');
+    }
+  }
+
   function handleGuestActionClick(button) {
     const guestCard = button.closest('.guest-card');
     if (!guestCard || guestCard.classList.contains('guest-add-card')) {
@@ -466,6 +529,14 @@
       if (actionButton) {
         event.preventDefault();
         handleGuestActionClick(actionButton);
+        return;
+      }
+
+      const deleteButton = event.target.closest('.guest-delete');
+      if (deleteButton) {
+        event.preventDefault();
+        const guestCard = deleteButton.closest('.guest-card');
+        deleteGuestCard(guestCard);
         return;
       }
 

@@ -92,12 +92,5 @@
     "houseId": "areia",
     "roomId": "areia-test-1785952094838",
     "orders": []
-  },
-  {
-    "id": "final-test-guest-1785952544520",
-    "name": "Final Test Guest",
-    "houseId": "cruzeiro",
-    "roomId": "cruzeiro-master",
-    "orders": []
   }
 ]

@@ -208,12 +208,12 @@ function handleApi(req, res, pathname) {
     return true;
   }
 
-  if (pathname === '/api/guests') {
+  if (pathname === '/api/guests' && req.method === 'GET') {
     sendJson(res, 200, state.guests);
     return true;
   }
 
-  if (pathname.startsWith('/api/guests/')) {
+  if (pathname.startsWith('/api/guests/') && req.method === 'GET') {
     const houseId = pathname.split('/').pop();
     sendJson(res, 200, state.guests.filter((guest) => guest.houseId === houseId));
     return true;
@@ -356,6 +356,28 @@ const server = http.createServer((req, res) => {
 
   if (pathname.startsWith('/api/')) {
     refreshStateFromDisk();
+    if (req.method === 'DELETE' && pathname.startsWith('/api/guests/')) {
+      const guestId = pathname.split('/').pop();
+      const guestIndex = state.guests.findIndex((guest) => guest.id === guestId);
+      if (guestIndex === -1) {
+        sendJson(res, 404, { error: 'Guest not found' });
+        return;
+      }
+
+      const guest = state.guests[guestIndex];
+      state.guests.splice(guestIndex, 1);
+      const room = state.rooms.find((item) => item.id === guest.roomId);
+      if (room) {
+        room.guestIds = (room.guestIds || []).filter((id) => id !== guestId);
+      }
+      syncHouseOccupancy();
+      writeJson(guestsFile, state.guests);
+      writeJson(roomsFile, state.rooms);
+      writeJson(housesFile, state.houses);
+      sendJson(res, 200, { success: true });
+      return;
+    }
+
     if (req.method === 'POST' && pathname === '/api/guests') {
       readBody(req)
         .then((body) => {
