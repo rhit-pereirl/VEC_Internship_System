@@ -18,7 +18,38 @@
     "name": "Ana Rocha",
     "houseId": "cruzeiro",
     "roomId": "cruzeiro-acerola",
-    "orders": []
+    "orders": [
+      {
+        "label": "Breakfast buffet",
+        "category": "Food & beverage",
+        "amount": 48
+      },
+      {
+        "label": "Fresh coconut drink",
+        "category": "Food & beverage",
+        "amount": 16
+      },
+      {
+        "label": "Sunset yoga session",
+        "category": "Experience",
+        "amount": 35
+      },
+      {
+        "label": "Surf lesson",
+        "category": "Experience",
+        "amount": 60
+      },
+      {
+        "label": "Island tour",
+        "category": "Experience",
+        "amount": 90
+      },
+      {
+        "label": "Teste",
+        "category": "Experience",
+        "amount": 10000
+      }
+    ]
   },
   {
     "id": "mateus-lima",

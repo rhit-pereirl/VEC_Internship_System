@@ -63,10 +63,16 @@ html.dark-theme body .modal-footer {
 }
 
 html.dark-theme body .modal .form-control,
-html.dark-theme body .modal .form-control::placeholder {
+html.dark-theme body .modal .form-control::placeholder,
+html.dark-theme body .form-control::placeholder {
   background-color: #2a2a2a !important;
   color: #f5f5f5 !important;
   border-color: rgba(255,255,255,.2) !important;
+}
+
+html.dark-theme body .form-control::placeholder {
+  color: rgba(255,255,255,0.72) !important;
+  opacity: 1 !important;
 }
 
 html.dark-theme body .modal .btn-outline-primary,

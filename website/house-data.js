@@ -58,7 +58,7 @@
 
       const guestsContainer = document.querySelector('[data-house-guests]');
       if (guestsContainer) {
-        guestsContainer.innerHTML = guests.map((guest) => `
+        const guestCardsHtml = guests.map((guest) => `
           <div class="col-12 col-sm-6 col-lg-4 d-flex">
             <div class="card guest-card shadow-sm w-100" data-guest-id="${guest.id}">
               <div class="card-body guest-card-body d-flex flex-column">
@@ -69,6 +69,23 @@
             </div>
           </div>
         `).join('');
+
+        const addGuestCardHtml = `
+          <div class="col-12 col-md-6 col-lg-4 d-flex">
+            <div class="card guest-card guest-add-card shadow-sm w-100">
+              <div class="card-body guest-card-body d-flex flex-column">
+                <h5 class="guest-card-title">Adicionar hóspede</h5>
+                <label class="form-label small mb-1" for="guestAddName">Nome</label>
+                <input id="guestAddName" class="form-control form-control-sm mb-2 guest-add-name" placeholder="Nome do hóspede" />
+                <label class="form-label small mb-1" for="guestAddRoom">Quarto</label>
+                <input id="guestAddRoom" class="form-control form-control-sm mb-3 guest-add-room" placeholder="Suite Master" />
+                <button class="btn btn-primary guest-add-button mt-auto">Adicionar hóspede</button>
+              </div>
+            </div>
+          </div>
+        `;
+
+        guestsContainer.innerHTML = guestCardsHtml + addGuestCardHtml;
       }
     } catch (error) {
       console.error('Unable to load house data', error);
