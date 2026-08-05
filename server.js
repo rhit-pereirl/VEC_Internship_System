@@ -303,7 +303,7 @@ function handleApi(req, res, pathname) {
         return true;
       }
 
-      if (req.method === 'DELETE' && parts[4]) {
+      if (req.method === 'DELETE' && parts.length === 5) {
         const itemId = parts[4];
         const itemIndex = state.menuItems.findIndex((item) => item.id === itemId && item.menuId === menuId);
         if (itemIndex === -1) {
@@ -317,6 +317,21 @@ function handleApi(req, res, pathname) {
         return true;
       }
 
+      return true;
+    }
+
+    if (req.method === 'DELETE' && parts.length === 3) {
+      const menuIndex = state.menus.findIndex((item) => item.id === menuId);
+      if (menuIndex === -1) {
+        sendJson(res, 404, { error: 'Menu not found' });
+        return true;
+      }
+
+      state.menus.splice(menuIndex, 1);
+      state.menuItems = state.menuItems.filter((item) => item.menuId !== menuId);
+      writeJson(menusFile, state.menus);
+      writeJson(menuItemsFile, state.menuItems);
+      sendJson(res, 200, { success: true });
       return true;
     }
 

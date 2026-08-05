@@ -186,6 +186,7 @@
                             </div>
                             <div class="d-flex gap-2 justify-content-center">
                                 <a class="btn btn-primary btn-sm" href="menu-edit.html?menuId=${encodeURIComponent(menu.id)}">Edit Menu</a>
+                                <button class="btn btn-outline-danger btn-sm" type="button" onclick="handleMenuDelete('${menu.id}')">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -220,7 +221,25 @@
             }
         });
 
-        // No modal action is needed here; menu cards now navigate to the menu edit page.
+        async function handleMenuDelete(menuId) {
+            if (!menuId) return;
+            if (!confirm('Delete this menu and all its items? This action cannot be undone.')) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/menus/${encodeURIComponent(menuId)}`, { method: 'DELETE' });
+                if (response.ok) {
+                    await loadMenus();
+                } else {
+                    const text = await response.text();
+                    alert('Unable to delete menu: ' + response.status + ' ' + text);
+                }
+            } catch (error) {
+                alert('Unable to delete menu: ' + error.message);
+                console.error('Unable to delete menu', error);
+            }
+        }
 
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', loadMenus);
