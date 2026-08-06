@@ -34,8 +34,9 @@
     "name": "Bananeira Suite",
     "image": "",
     "guestIds": [
-      "lucas-pereira-1785951902409"
-    ]
+      "carlos-mendes"
+    ],
+    "capacity": 2
   },
   {
     "id": "cruzeiro-suite-test-1785952000674",
@@ -52,17 +53,9 @@
     "name": "Suite Azul",
     "image": "",
     "guestIds": [
-      "lucas-pereira-1785952080679"
-    ]
-  },
-  {
-    "id": "areia-test-1785952094838",
-    "houseId": "areia",
-    "name": "TEst",
-    "image": "",
-    "guestIds": [
-      "teste-1785952094838"
-    ]
+      "j-lia-fernandes"
+    ],
+    "capacity": 2
   },
   {
     "id": "cruzeiro-test-delete-room-1785953712410",
@@ -70,5 +63,303 @@
     "name": "Test Delete Room",
     "image": "",
     "guestIds": []
+  },
+  {
+    "id": "pescador-master",
+    "houseId": "pescador",
+    "name": "Master Suite",
+    "image": "./Images/pescador_rooms/suite_master.jpeg",
+    "guestIds": [
+      "felipe-moreira",
+      "bianca-torres"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "pescador-jangadeiro",
+    "houseId": "pescador",
+    "name": "Suite Jangadeiro",
+    "image": "./Images/pescador_rooms/suite_jangadeiro.jpeg",
+    "guestIds": [
+      "camila-prado"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "pescador-pescador",
+    "houseId": "pescador",
+    "name": "Suite Pescador",
+    "image": "./Images/pescador_rooms/suite_pescador.jpg",
+    "guestIds": [
+      "andr-reis",
+      "juliana-lima"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "corais-master",
+    "houseId": "corais",
+    "name": "Master Suite",
+    "image": "./Images/corais_rooms/suite_master.jpg",
+    "guestIds": [
+      "eduardo-gomes",
+      "mariana-reis"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "corais-beijupira",
+    "houseId": "corais",
+    "name": "Suíte Beijupira",
+    "image": "./Images/corais_rooms/suite_beijupira.jpg",
+    "guestIds": [
+      "luisa-pinto"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "corais-carapeba",
+    "houseId": "corais",
+    "name": "Suíte Carapeba",
+    "image": "./Images/corais_rooms/suite_carapeba.jpg",
+    "guestIds": [],
+    "capacity": 2
+  },
+  {
+    "id": "corais-cioba",
+    "houseId": "corais",
+    "name": "Suíte Cioba",
+    "image": "./Images/corais_rooms/suite_cioba.jpg",
+    "guestIds": [
+      "felipe-andrade"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "corais-cumurupim",
+    "houseId": "corais",
+    "name": "Suíte Cumurupim",
+    "image": "./Images/corais_rooms/suite_cumurupim.jpg",
+    "guestIds": [
+      "marta-silva",
+      "paulo-rocha"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "corais-dourada",
+    "houseId": "corais",
+    "name": "Suíte Dourada",
+    "image": "./Images/corais_rooms/suite_dourada.jpg",
+    "guestIds": [],
+    "capacity": 2
+  },
+  {
+    "id": "corais-pampo",
+    "houseId": "corais",
+    "name": "Suíte Pampo",
+    "image": "./Images/corais_rooms/suite_pampo.jpg",
+    "guestIds": [
+      "renata-lopes"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "corais-pescada",
+    "houseId": "corais",
+    "name": "Suíte Pescada",
+    "image": "./Images/corais_rooms/suite_pescada.jpg",
+    "guestIds": [
+      "guilherme-nunes",
+      "paula-teixeira"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "corais-robalo",
+    "houseId": "corais",
+    "name": "Suíte Robalo",
+    "image": "./Images/corais_rooms/suite_robalo.jpg",
+    "guestIds": [],
+    "capacity": 2
+  },
+  {
+    "id": "corais-xareu",
+    "houseId": "corais",
+    "name": "Suíte Xaréu",
+    "image": "./Images/corais_rooms/suite_xareu.jpg",
+    "guestIds": [
+      "daniela-moraes"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "estrela-master",
+    "houseId": "estrela",
+    "name": "Master Suite",
+    "image": "./Images/estrela_rooms/master_suite.jpg",
+    "guestIds": [
+      "pedro-alves",
+      "carla-mendes"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "estrela-coral",
+    "houseId": "estrela",
+    "name": "Coral Suite",
+    "image": "./Images/estrela_rooms/coral_suite.jpg",
+    "guestIds": [
+      "mariana-costa"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "estrela-onda",
+    "houseId": "estrela",
+    "name": "Onda Siote",
+    "image": "./Images/estrela_rooms/onda_siote.jpg",
+    "guestIds": [
+      "rafael-souza"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "estrela-sereira",
+    "houseId": "estrela",
+    "name": "Sereira Suite",
+    "image": "./Images/estrela_rooms/sereira_suite.jpg",
+    "guestIds": [
+      "paula-gomes",
+      "lucas-silva-1"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "estrela-xie",
+    "houseId": "estrela",
+    "name": "Xie Suite",
+    "image": "./Images/estrela_rooms/xie_suite.jpg",
+    "guestIds": [],
+    "capacity": 2
+  },
+  {
+    "id": "mirante-master",
+    "houseId": "mirante",
+    "name": "Master Suite",
+    "image": "./Images/mirante_rooms/master_suite.jpeg",
+    "guestIds": [
+      "marcos-silva",
+      "helena-ramos"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "mirante-ancora",
+    "houseId": "mirante",
+    "name": "Suíte Âncora",
+    "image": "./Images/mirante_rooms/suite_ancora.jpg",
+    "guestIds": [
+      "isabela-costa"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "mirante-canoa",
+    "houseId": "mirante",
+    "name": "Suíte Canoa",
+    "image": "./Images/mirante_rooms/suite_canoa.jpg",
+    "guestIds": [],
+    "capacity": 2
+  },
+  {
+    "id": "mirante-concha",
+    "houseId": "mirante",
+    "name": "Suíte Concha",
+    "image": "./Images/mirante_rooms/suite_concha.jpg",
+    "guestIds": [
+      "rafael-pinto"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "mirante-estrela",
+    "houseId": "mirante",
+    "name": "Suíte Estrela",
+    "image": "./Images/mirante_rooms/suite_estrela.jpg",
+    "guestIds": [
+      "laura-mendes",
+      "thiago-ara-jo"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "mirante-varanda",
+    "houseId": "mirante",
+    "name": "Suíte Varanda",
+    "image": "./Images/mirante_rooms/suite_varanda.jpg",
+    "guestIds": [],
+    "capacity": 2
+  },
+  {
+    "id": "amendoeira-master",
+    "houseId": "amendoeira",
+    "name": "Master Suite",
+    "image": "./Images/amendoeira_rooms/master_suite.jpg",
+    "guestIds": [
+      "jo-o-silva",
+      "ana-pereira"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "amendoeira-cajueiro",
+    "houseId": "amendoeira",
+    "name": "Cajueiro Suite",
+    "image": "./Images/amendoeira_rooms/cajueiro_suite.jpg",
+    "guestIds": [],
+    "capacity": 2
+  },
+  {
+    "id": "amendoeira-coqueiral",
+    "houseId": "amendoeira",
+    "name": "Coqueiral Suite",
+    "image": "./Images/amendoeira_rooms/coqueiral_suite.jpg",
+    "guestIds": [
+      "beatriz-lima"
+    ],
+    "capacity": 2
+  },
+  {
+    "id": "amendoeira-pitangueira",
+    "houseId": "amendoeira",
+    "name": "Pitangueira Suite",
+    "image": "./Images/amendoeira_rooms/pitangueira_suite.jpg",
+    "guestIds": [],
+    "capacity": 2
+  },
+  {
+    "id": "areia-master-suite",
+    "houseId": "areia",
+    "name": "Master Suite",
+    "image": "",
+    "guestIds": [],
+    "capacity": 2
+  },
+  {
+    "id": "areia-suite-amarela",
+    "houseId": "areia",
+    "name": "Suite Amarela",
+    "image": "",
+    "guestIds": [],
+    "capacity": 2
+  },
+  {
+    "id": "areia-suite-verde",
+    "houseId": "areia",
+    "name": "Suite Verde",
+    "image": "",
+    "guestIds": [],
+    "capacity": 2
   }
 ]

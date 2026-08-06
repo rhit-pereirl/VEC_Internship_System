@@ -4,6 +4,7 @@ public class Room {
 
     private String name;
     private ArrayList<Guest> guests;
+    public int capacity;
 
     public Room(String name) {
         this.name = name;

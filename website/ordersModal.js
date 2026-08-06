@@ -105,12 +105,42 @@
         } catch (err) {
           roomsForHouse = [];
         }
+        // Merge server rooms with DOM-inferred rooms so capacities and missing rooms are included
+        try {
+          const roomsContainer = document.querySelector('[data-house-rooms]') || document.querySelector('.rooms-section .row');
+          if (roomsContainer) {
+            const domEls = Array.from(roomsContainer.querySelectorAll('.room-card'));
+            const domRooms = domEls.map((el, idx) => {
+              const name = el.querySelector('.card-title')?.textContent?.trim() || `Room ${idx}`;
+              const guestText = el.querySelector('.card-text')?.textContent || '';
+              const match = guestText.match(/(\d+)\s*\/\s*(\d+)/);
+              const count = match ? Number(match[1]) : 0;
+              const cap = match ? Number(match[2]) : 2;
+              return { id: `dom-room-${idx}`, name, houseId, guestIds: new Array(count), capacity: cap };
+            });
+
+            // ensure roomsForHouse is an array
+            roomsForHouse = roomsForHouse || [];
+            domRooms.forEach((d) => {
+              const found = roomsForHouse.find((r) => (r.name || '').trim().toLowerCase() === (d.name || '').trim().toLowerCase());
+              if (found) {
+                if (!('capacity' in found) && d.capacity) found.capacity = d.capacity;
+                if ((!found.guestIds || found.guestIds.length === 0) && d.guestIds && d.guestIds.length > 0) found.guestIds = d.guestIds;
+              } else {
+                roomsForHouse.push(d);
+              }
+            });
+          }
+        } catch (err) {
+          // ignore DOM inference errors
+        }
       } catch (error) {
         console.error('Unable to load guests from server', error);
       }
     }
 
     guestMap = new Map(guests.map((guest) => [guest.id, guest]));
+      console.debug('ordersModal: built guestMap for house, guests=', guests.length);
 
     document.querySelectorAll('.guest-card').forEach((guestCard) => {
       if (guestCard.classList.contains('guest-add-card')) {
@@ -140,7 +170,12 @@
   }
 
   function buildGuestAddCard() {
-    const roomOptions = (roomsForHouse || []).map((r) => `<option value="${(r.name || '').replace(/"/g,'\"')}">${(r.name || '')}</option>`).join('');
+    const available = (roomsForHouse || []).filter((r) => ((r.guestIds || []).length < (r.capacity || 2)));
+    let roomOptions = available.map((r) => `<option value="${(r.name || '').replace(/"/g,'\\"')}">${(r.name || '')}</option>`).join('');
+    if (!roomOptions || roomOptions === '') {
+      // No available rooms: show a disabled placeholder instead of listing full rooms
+      roomOptions = `<option value="__none__" disabled>Sem quartos disponíveis</option>`;
+    }
     return `
       <div class="col-12 col-md-6 col-lg-4 d-flex">
         <div class="card guest-card guest-add-card shadow-sm w-100">
@@ -395,6 +430,7 @@
     const guestId = resolveGuestId(guestCard);
     if (!guestId) {
       alert('Não foi possível identificar o hóspede para exclusão.');
+        console.debug('ordersModal: delete failed, no guestId for card', guestCard);
       return;
     }
 
@@ -449,6 +485,9 @@
       const val = roomSelect.value;
       if (val === '__new__') {
         roomName = roomCustom?.value.trim();
+      } else if (val === '__none__') {
+        alert('Não há quartos disponíveis para seleção.');
+        return;
       } else {
         roomName = val;
       }

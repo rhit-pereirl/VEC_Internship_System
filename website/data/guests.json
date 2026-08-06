@@ -66,13 +66,6 @@
     "orders": []
   },
   {
-    "id": "lucas-pereira-1785951902409",
-    "name": "Lucas Pereira",
-    "houseId": "amendoeira",
-    "roomId": "amendoeira-bananeira-suite-1785951902409",
-    "orders": []
-  },
-  {
     "id": "automated-test-guest-1785952000674",
     "name": "Automated Test Guest",
     "houseId": "cruzeiro",
@@ -83,7 +76,7 @@
     "id": "lucas-pereira-1785952080679",
     "name": "Lucas Pereira",
     "houseId": "areia",
-    "roomId": "areia-suite-azul-1785952080679",
+    "roomId": "",
     "orders": []
   },
   {
@@ -91,6 +84,272 @@
     "name": "Teste",
     "houseId": "areia",
     "roomId": "areia-test-1785952094838",
+    "orders": []
+  },
+  {
+    "id": "felipe-moreira",
+    "name": "Felipe Moreira",
+    "houseId": "pescador",
+    "roomId": "pescador-master",
+    "orders": []
+  },
+  {
+    "id": "bianca-torres",
+    "name": "Bianca Torres",
+    "houseId": "pescador",
+    "roomId": "pescador-master",
+    "orders": []
+  },
+  {
+    "id": "camila-prado",
+    "name": "Camila Prado",
+    "houseId": "pescador",
+    "roomId": "pescador-jangadeiro",
+    "orders": []
+  },
+  {
+    "id": "andr-reis",
+    "name": "André Reis",
+    "houseId": "pescador",
+    "roomId": "pescador-pescador",
+    "orders": []
+  },
+  {
+    "id": "juliana-lima",
+    "name": "Juliana Lima",
+    "houseId": "pescador",
+    "roomId": "pescador-pescador",
+    "orders": []
+  },
+  {
+    "id": "lucas-mello",
+    "name": "Lucas Mello",
+    "houseId": "areia",
+    "roomId": "",
+    "orders": []
+  },
+  {
+    "id": "renata-silva",
+    "name": "Renata Silva",
+    "houseId": "areia",
+    "roomId": "",
+    "orders": []
+  },
+  {
+    "id": "marta-oliveira",
+    "name": "Marta Oliveira",
+    "houseId": "areia",
+    "roomId": "",
+    "orders": []
+  },
+  {
+    "id": "pedro-nunes",
+    "name": "Pedro Nunes",
+    "houseId": "areia",
+    "roomId": "",
+    "orders": []
+  },
+  {
+    "id": "j-lia-fernandes",
+    "name": "Júlia Fernandes",
+    "houseId": "areia",
+    "roomId": "areia-suite-azul-1785952080679",
+    "orders": []
+  },
+  {
+    "id": "thiago-ramos",
+    "name": "Thiago Ramos",
+    "houseId": "areia",
+    "roomId": "",
+    "orders": []
+  },
+  {
+    "id": "camila-pinto",
+    "name": "Camila Pinto",
+    "houseId": "areia",
+    "roomId": "",
+    "orders": []
+  },
+  {
+    "id": "pedro-alves",
+    "name": "Pedro Alves",
+    "houseId": "estrela",
+    "roomId": "estrela-master",
+    "orders": []
+  },
+  {
+    "id": "carla-mendes",
+    "name": "Carla Mendes",
+    "houseId": "estrela",
+    "roomId": "estrela-master",
+    "orders": []
+  },
+  {
+    "id": "mariana-costa",
+    "name": "Mariana Costa",
+    "houseId": "estrela",
+    "roomId": "estrela-coral",
+    "orders": []
+  },
+  {
+    "id": "rafael-souza",
+    "name": "Rafael Souza",
+    "houseId": "estrela",
+    "roomId": "estrela-onda",
+    "orders": []
+  },
+  {
+    "id": "paula-gomes",
+    "name": "Paula Gomes",
+    "houseId": "estrela",
+    "roomId": "estrela-sereira",
+    "orders": []
+  },
+  {
+    "id": "lucas-silva-1",
+    "name": "Lucas Silva",
+    "houseId": "estrela",
+    "roomId": "estrela-sereira",
+    "orders": []
+  },
+  {
+    "id": "jo-o-silva",
+    "name": "João Silva",
+    "houseId": "amendoeira",
+    "roomId": "amendoeira-master",
+    "orders": []
+  },
+  {
+    "id": "ana-pereira",
+    "name": "Ana Pereira",
+    "houseId": "amendoeira",
+    "roomId": "amendoeira-master",
+    "orders": []
+  },
+  {
+    "id": "carlos-mendes",
+    "name": "Carlos Mendes",
+    "houseId": "amendoeira",
+    "roomId": "amendoeira-bananeira-suite-1785951902409",
+    "orders": []
+  },
+  {
+    "id": "beatriz-lima",
+    "name": "Beatriz Lima",
+    "houseId": "amendoeira",
+    "roomId": "amendoeira-coqueiral",
+    "orders": []
+  },
+  {
+    "id": "marcos-silva",
+    "name": "Marcos Silva",
+    "houseId": "mirante",
+    "roomId": "mirante-master",
+    "orders": []
+  },
+  {
+    "id": "helena-ramos",
+    "name": "Helena Ramos",
+    "houseId": "mirante",
+    "roomId": "mirante-master",
+    "orders": []
+  },
+  {
+    "id": "isabela-costa",
+    "name": "Isabela Costa",
+    "houseId": "mirante",
+    "roomId": "mirante-ancora",
+    "orders": []
+  },
+  {
+    "id": "rafael-pinto",
+    "name": "Rafael Pinto",
+    "houseId": "mirante",
+    "roomId": "mirante-concha",
+    "orders": []
+  },
+  {
+    "id": "laura-mendes",
+    "name": "Laura Mendes",
+    "houseId": "mirante",
+    "roomId": "mirante-estrela",
+    "orders": []
+  },
+  {
+    "id": "thiago-ara-jo",
+    "name": "Thiago Araújo",
+    "houseId": "mirante",
+    "roomId": "mirante-estrela",
+    "orders": []
+  },
+  {
+    "id": "eduardo-gomes",
+    "name": "Eduardo Gomes",
+    "houseId": "corais",
+    "roomId": "corais-master",
+    "orders": []
+  },
+  {
+    "id": "mariana-reis",
+    "name": "Mariana Reis",
+    "houseId": "corais",
+    "roomId": "corais-master",
+    "orders": []
+  },
+  {
+    "id": "luisa-pinto",
+    "name": "Luisa Pinto",
+    "houseId": "corais",
+    "roomId": "corais-beijupira",
+    "orders": []
+  },
+  {
+    "id": "felipe-andrade",
+    "name": "Felipe Andrade",
+    "houseId": "corais",
+    "roomId": "corais-cioba",
+    "orders": []
+  },
+  {
+    "id": "marta-silva",
+    "name": "Marta Silva",
+    "houseId": "corais",
+    "roomId": "corais-cumurupim",
+    "orders": []
+  },
+  {
+    "id": "paulo-rocha",
+    "name": "Paulo Rocha",
+    "houseId": "corais",
+    "roomId": "corais-cumurupim",
+    "orders": []
+  },
+  {
+    "id": "renata-lopes",
+    "name": "Renata Lopes",
+    "houseId": "corais",
+    "roomId": "corais-pampo",
+    "orders": []
+  },
+  {
+    "id": "guilherme-nunes",
+    "name": "Guilherme Nunes",
+    "houseId": "corais",
+    "roomId": "corais-pescada",
+    "orders": []
+  },
+  {
+    "id": "paula-teixeira",
+    "name": "Paula Teixeira",
+    "houseId": "corais",
+    "roomId": "corais-pescada",
+    "orders": []
+  },
+  {
+    "id": "daniela-moraes",
+    "name": "Daniela Moraes",
+    "houseId": "corais",
+    "roomId": "corais-xareu",
     "orders": []
   }
 ]

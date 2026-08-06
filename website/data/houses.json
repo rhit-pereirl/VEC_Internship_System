@@ -10,7 +10,7 @@
     "id": "pescador",
     "name": "Casa do Pescador",
     "plan": "Conforto",
-    "occupied": false,
+    "occupied": true,
     "image": "./Images/pescador_pic.jpeg"
   },
   {
@@ -24,7 +24,7 @@
     "id": "estrela",
     "name": "Casa Estrela do Mar",
     "plan": "Conforto",
-    "occupied": false,
+    "occupied": true,
     "image": "./Images/estrela_pic.jpg"
   },
   {
@@ -38,14 +38,14 @@
     "id": "mirante",
     "name": "Casa Mirante da Gameleira",
     "plan": "Executivo",
-    "occupied": false,
+    "occupied": true,
     "image": "./Images/mirante_pic.jpg"
   },
   {
     "id": "corais",
     "name": "Casa dos Corais",
     "plan": "Conforto",
-    "occupied": false,
+    "occupied": true,
     "image": "./Images/corais_pic2.jpg"
   }
 ]
